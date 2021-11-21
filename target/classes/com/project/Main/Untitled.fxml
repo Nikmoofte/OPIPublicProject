@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
+            prefWidth="700.0" style="-fx-background-color: #696969#696969;" xmlns="http://javafx.com/javafx/16"
+            xmlns:fx="http://javafx.com/fxml/1">
+   <Label fx:id="label" layoutX="77.0" layoutY="55.0" text="#name" textFill="WHITE">
+      <font>
+         <Font name="Luminari" size="34.0"/>
+      </font>
+      <cursor>
+         <Cursor fx:constant="CROSSHAIR"/>
+      </cursor>
+      <effect>
+         <Glow/>
+      </effect>
+   </Label>
+   <Button fx:id="rbtn" layoutX="577.0" layoutY="226.0" mnemonicParsing="false"
+           style="-fx-background-color: #FF8C00#FF8C00;" text="Roma">
+      <font>
+         <Font name="Luminari" size="23.0"/>
+      </font>
+      <cursor>
+         <Cursor fx:constant="HAND"/>
+      </cursor>
+   </Button>
+   <Button fx:id="mbtn" layoutX="14.0" layoutY="226.0" mnemonicParsing="false"
+           style="-fx-background-color: #FF8C00#FF8C00;" text="Misha">
+      <font>
+         <Font name="Luminari" size="23.0"/>
+      </font>
+      <cursor>
+         <Cursor fx:constant="HAND"/>
+      </cursor>
+   </Button>
+   <TextField fx:id="textfield" layoutX="231.0" layoutY="231.0" promptText="m y   t e x t">
+      <font>
+         <Font name="Luminari" size="18.0"/>
+      </font>
+      <cursor>
+         <Cursor fx:constant="TEXT"/>
+      </cursor>
+   </TextField>
+   <Button fx:id="sbmt" layoutX="231.0" layoutY="291.0" mnemonicParsing="false"
+           style="-fx-background-color: #FF8C00#FF8C00 #FF8C00#FF8C00;" text="S u b m i t">
+      <font>
+         <Font name="Luminari" size="18.0"/>
+      </font>
+      <cursor>
+         <Cursor fx:constant="HAND"/>
+      </cursor>
+   </Button>
+</AnchorPane>
