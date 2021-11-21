@@ -2,7 +2,6 @@ module com.project.Main {
     requires javafx.controls;
     requires javafx.fxml;
 
-
     exports com.project.bakkara;
     exports com.project.Main;
     exports com.project.roulette;
