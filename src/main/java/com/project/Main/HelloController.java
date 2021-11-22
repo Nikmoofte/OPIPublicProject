@@ -63,7 +63,7 @@ public class HelloController {
                 FXMLLoader fxmlLoader = new FXMLLoader(HelloController.class.getResource("main-menu.fxml"));
                 Scene scene = null;
                 try {
-                    scene = new Scene(fxmlLoader.load(), 700, 400);
+                    scene = new Scene(fxmlLoader.load(), 700, 500);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }

@@ -10,9 +10,16 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 public class MainMenuController {
+
+    public Label BacWins;
+    public Label BacLose;
+    public Label BacDraws;
+    public Label BacTotalIncome;
+    
 
     @FXML
     private ResourceBundle resources;
@@ -28,7 +35,6 @@ public class MainMenuController {
 
     @FXML
     private Button plBlackjack;
-
     @FXML
     void OpenRoullete() throws IOException {
         plRoulette.getScene().getWindow().hide();
