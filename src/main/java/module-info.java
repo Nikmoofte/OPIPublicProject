@@ -1,6 +1,7 @@
 module com.project.Main {
     requires javafx.controls;
     requires javafx.fxml;
+    requires javafx.graphics;
 
     exports com.project.bakkara;
     exports com.project.Main;
