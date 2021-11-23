@@ -64,6 +64,9 @@ public class MainMenuController {
     private Label nameLabel;
 
     @FXML
+    private Label Money;
+
+    @FXML
     void initialize() {
         BlackWins.setText(IntToString(Stats[1]));
         BlackLooses.setText(IntToString(Stats[2]));
