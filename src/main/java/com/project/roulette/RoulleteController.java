@@ -10,7 +10,6 @@ import javafx.util.Duration;
 
 public class RoulleteController {
     int Account = 100, Sector, bet, Angle, wins = 1, looses = 1;
-    public static int totalWins = 0;
 
 
     boolean SectorChoice, EvenOddChoice, RangeChoice, ColorChoice, Even, Odd, FirstRange, SecondRange, Red, Black;
