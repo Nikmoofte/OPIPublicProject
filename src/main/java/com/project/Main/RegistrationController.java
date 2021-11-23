@@ -39,9 +39,7 @@ public class RegistrationController {
     }
      private boolean ValidityCheck(String accounts)
      {
-         String[] arr = accounts.split("\n");
-
-         for(String s : arr)
+         for(String s : accounts.split("\n"))
              if(s.split(" ")[0].equals(reg_login.getText()))
                  return false;
          return true;
