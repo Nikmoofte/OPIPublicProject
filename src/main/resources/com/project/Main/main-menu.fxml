@@ -9,270 +9,281 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="700.0" style="-fx-background-color: #191970#191970;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.project.Main.MainMenuController">
-    <children>
-        <AnchorPane layoutY="81.0" prefHeight="400.0" prefWidth="700.0" style="-fx-background-color: #ffffff;">
-         <children>
-            <Button fx:id="plBlackjack" layoutX="450.0" layoutY="29.0" mnemonicParsing="false" prefHeight="71.0" prefWidth="195.0" style="-fx-background-color: #ffd700;" text="BLACKJACK" textFill="MIDNIGHTBLUE">
-               <font>
-                  <Font size="24.0" />
-               </font>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Button>
-            <Button fx:id="plRoulette" layoutX="450.0" layoutY="229.0" mnemonicParsing="false" onAction="#OpenRoullete" prefHeight="71.0" prefWidth="195.0" style="-fx-background-color: #ffd700;" text="ROULETTE" textFill="MIDNIGHTBLUE">
-               <font>
-                  <Font size="24.0" />
-               </font>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Button>
-            <Button fx:id="plBaccara" layoutX="450.0" layoutY="129.0" mnemonicParsing="false" onAction="#OpenBaccara" prefHeight="71.0" prefWidth="195.0" style="-fx-background-color: #ffd700;" text="BACCARA" textFill="MIDNIGHTBLUE">
-               <font>
-                  <Font size="24.0" />
-               </font>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Button>
-            <Button fx:id="signOutButton" layoutX="46.0" layoutY="273.0" mnemonicParsing="false" onAction="#BackToSingIn" prefHeight="54.0" prefWidth="173.0" style="-fx-background-color: GOLD;" text="s i g n   o u t" textFill="MIDNIGHTBLUE">
-               <font>
-                  <Font name="Luminari" size="18.0" />
-               </font>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Button>
-            <TabPane layoutX="27.0" layoutY="64.0" prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE">
-              <tabs>
-                <Tab text="Blackjack">
-                  <content>
-                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                           <children>
-                              <Label layoutX="6.0" layoutY="8.0" prefHeight="30.0" prefWidth="52.0" text="Wins:">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                                 <effect>
-                                    <DropShadow />
-                                 </effect>
-                              </Label>
-                              <Label layoutX="6.0" layoutY="38.0" prefHeight="30.0" prefWidth="49.0" text="Lose:">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                                 <effect>
-                                    <DropShadow />
-                                 </effect>
-                              </Label>
-                              <Label layoutX="6.0" layoutY="68.0" prefHeight="30.0" prefWidth="66.0" text="Draws:">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                                 <effect>
-                                    <DropShadow />
-                                 </effect>
-                              </Label>
-                              <Label layoutX="33.0" layoutY="98.0" prefHeight="30.0" prefWidth="119.0" text="Total income">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                                 <effect>
-                                    <DropShadow />
-                                 </effect>
-                              </Label>
-                              <Label fx:id="BlackTotalIncome" layoutX="33.0" layoutY="128.0" prefHeight="30.0" prefWidth="152.0" text="0">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                                 <effect>
-                                    <DropShadow />
-                                 </effect>
-                              </Label>
-                              <Label fx:id="BlackDraws" layoutX="72.0" layoutY="68.0" prefHeight="30.0" prefWidth="108.0" text="0">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                                 <effect>
-                                    <DropShadow />
-                                 </effect>
-                              </Label>
-                              <Label fx:id="BlackLooses" layoutX="72.0" layoutY="38.0" prefHeight="30.0" prefWidth="108.0" text="0">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                                 <effect>
-                                    <DropShadow />
-                                 </effect>
-                              </Label>
-                              <Label fx:id="BlackWins" layoutX="72.0" layoutY="8.0" prefHeight="30.0" prefWidth="108.0" text="0">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                                 <effect>
-                                    <DropShadow />
-                                 </effect>
-                              </Label>
-                           </children>
-                        </AnchorPane>
-                  </content>
-                </Tab>
-                <Tab text="Baccara">
-                  <content>
-                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                           <children>
-                              <Label layoutX="6.0" layoutY="8.0" prefHeight="30.0" prefWidth="49.0" text="Wins:">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                                 <effect>
-                                    <DropShadow />
-                                 </effect>
-                              </Label>
-                              <Label layoutX="6.0" layoutY="38.0" prefHeight="30.0" prefWidth="47.0" text="Lose:">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                                 <effect>
-                                    <DropShadow />
-                                 </effect>
-                              </Label>
-                              <Label layoutX="6.0" layoutY="68.0" prefHeight="30.0" prefWidth="64.0" text="Draws:">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                                 <effect>
-                                    <DropShadow />
-                                 </effect>
-                              </Label>
-                              <Label layoutX="33.0" layoutY="98.0" prefHeight="30.0" prefWidth="120.0" text="Total income">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                                 <effect>
-                                    <DropShadow />
-                                 </effect>
-                              </Label>
-                              <Label fx:id="BacTotalIncome" layoutX="33.0" layoutY="128.0" prefHeight="30.0" prefWidth="144.0" text="0">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                                 <effect>
-                                    <DropShadow />
-                                 </effect>
-                              </Label>
-                              <Label fx:id="BacWins" layoutX="72.0" layoutY="8.0" prefHeight="30.0" prefWidth="108.0" text="0">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                                 <effect>
-                                    <DropShadow />
-                                 </effect>
-                              </Label>
-                              <Label fx:id="BacLooses" layoutX="72.0" layoutY="38.0" prefHeight="30.0" prefWidth="108.0" text="0">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                                 <effect>
-                                    <DropShadow />
-                                 </effect>
-                              </Label>
-                              <Label fx:id="BacDraws" layoutX="72.0" layoutY="68.0" prefHeight="30.0" prefWidth="108.0" text="0">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                                 <effect>
-                                    <DropShadow />
-                                 </effect>
-                              </Label>
-                           </children>
-                        </AnchorPane>
-                  </content>
-                </Tab>
-                  <Tab text="Roulette">
-                     <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                           <children>
-                              <Label layoutX="6.0" layoutY="8.0" prefHeight="30.0" prefWidth="51.0" text="Wins:">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                                 <effect>
-                                    <DropShadow />
-                                 </effect>
-                              </Label>
-                              <Label layoutX="6.0" layoutY="38.0" prefHeight="30.0" prefWidth="48.0" text="Lose:">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                                 <effect>
-                                    <DropShadow />
-                                 </effect>
-                              </Label>
-                              <Label layoutX="33.0" layoutY="98.0" prefHeight="30.0" prefWidth="120.0" text="Total income">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                                 <effect>
-                                    <DropShadow />
-                                 </effect>
-                              </Label>
-                              <Label fx:id="RouletteTotalIncome" layoutX="33.0" layoutY="128.0" prefHeight="30.0" prefWidth="150.0" text="0">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                                 <effect>
-                                    <DropShadow />
-                                 </effect>
-                              </Label>
-                              <Label fx:id="RouletteWins" layoutX="72.0" layoutY="8.0" prefHeight="30.0" prefWidth="108.0" text="0">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                                 <effect>
-                                    <DropShadow />
-                                 </effect>
-                              </Label>
-                              <Label fx:id="RouletteLooses" layoutX="72.0" layoutY="38.0" prefHeight="30.0" prefWidth="108.0" text="0">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                                 <effect>
-                                    <DropShadow />
-                                 </effect>
-                              </Label>
-                           </children></AnchorPane>
-                     </content>
-                  </Tab>
-              </tabs>
-            </TabPane>
-            <Label layoutX="27.0" layoutY="22.0" prefHeight="26.0" prefWidth="211.0" text="Statistic:">
-               <font>
-                  <Font size="20.0" />
-               </font>
-               <effect>
-                  <DropShadow />
-               </effect>
-            </Label>
-         </children>
-        </AnchorPane>
-      <Label layoutX="14.0" layoutY="-9.0" text="Welcome, " textFill="GOLD">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
+            prefWidth="700.0" style="-fx-background-color: #191970#191970;" xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.project.Main.MainMenuController">
+   <AnchorPane layoutY="81.0" prefHeight="400.0" prefWidth="700.0" style="-fx-background-color: #ffffff;">
+      <Button fx:id="plBlackjack" layoutX="450.0" layoutY="29.0" mnemonicParsing="false" prefHeight="71.0"
+              prefWidth="195.0" style="-fx-background-color: #ffd700;" text="BLACKJACK" textFill="MIDNIGHTBLUE">
          <font>
-            <Font name="Luminari" size="50.0" />
+            <Font size="24.0"/>
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND"/>
+         </cursor>
+      </Button>
+      <Button fx:id="plRoulette" layoutX="450.0" layoutY="229.0" mnemonicParsing="false" onAction="#OpenRoullete"
+              prefHeight="71.0" prefWidth="195.0" style="-fx-background-color: #ffd700;" text="ROULETTE"
+              textFill="MIDNIGHTBLUE">
+         <font>
+            <Font size="24.0"/>
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND"/>
+         </cursor>
+      </Button>
+      <Button fx:id="plBaccara" layoutX="450.0" layoutY="129.0" mnemonicParsing="false" onAction="#OpenBaccara"
+              prefHeight="71.0" prefWidth="195.0" style="-fx-background-color: #ffd700;" text="BACCARA"
+              textFill="MIDNIGHTBLUE">
+         <font>
+            <Font size="24.0"/>
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND"/>
+         </cursor>
+      </Button>
+      <Button fx:id="signOutButton" layoutX="46.0" layoutY="273.0" mnemonicParsing="false" onAction="#BackToSingIn"
+              prefHeight="54.0" prefWidth="173.0" style="-fx-background-color: GOLD;" text="s i g n   o u t"
+              textFill="MIDNIGHTBLUE">
+         <font>
+            <Font name="Luminari" size="18.0"/>
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND"/>
+         </cursor>
+      </Button>
+      <TabPane layoutX="27.0" layoutY="64.0" prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE">
+         <Tab text="Blackjack">
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <Label layoutX="6.0" layoutY="8.0" prefHeight="30.0" prefWidth="52.0" text="Wins:">
+                  <font>
+                     <Font size="20.0"/>
+                  </font>
+                  <effect>
+                     <DropShadow/>
+                  </effect>
+               </Label>
+               <Label layoutX="6.0" layoutY="38.0" prefHeight="30.0" prefWidth="49.0" text="Lose:">
+                  <font>
+                     <Font size="20.0"/>
+                  </font>
+                  <effect>
+                     <DropShadow/>
+                  </effect>
+               </Label>
+               <Label layoutX="6.0" layoutY="68.0" prefHeight="30.0" prefWidth="66.0" text="Draws:">
+                  <font>
+                     <Font size="20.0"/>
+                  </font>
+                  <effect>
+                     <DropShadow/>
+                  </effect>
+               </Label>
+               <Label layoutX="33.0" layoutY="98.0" prefHeight="30.0" prefWidth="119.0" text="Total income">
+                  <font>
+                     <Font size="20.0"/>
+                  </font>
+                  <effect>
+                     <DropShadow/>
+                  </effect>
+               </Label>
+               <Label fx:id="BlackTotalIncome" layoutX="33.0" layoutY="128.0" prefHeight="30.0"
+                      prefWidth="152.0" text="0">
+                  <font>
+                     <Font size="20.0"/>
+                  </font>
+                  <effect>
+                     <DropShadow/>
+                  </effect>
+               </Label>
+               <Label fx:id="BlackDraws" layoutX="72.0" layoutY="68.0" prefHeight="30.0" prefWidth="108.0"
+                      text="0">
+                  <font>
+                     <Font size="20.0"/>
+                  </font>
+                  <effect>
+                     <DropShadow/>
+                  </effect>
+               </Label>
+               <Label fx:id="BlackLooses" layoutX="72.0" layoutY="38.0" prefHeight="30.0" prefWidth="108.0"
+                      text="0">
+                  <font>
+                     <Font size="20.0"/>
+                  </font>
+                  <effect>
+                     <DropShadow/>
+                  </effect>
+               </Label>
+               <Label fx:id="BlackWins" layoutX="72.0" layoutY="8.0" prefHeight="30.0" prefWidth="108.0"
+                      text="0">
+                  <font>
+                     <Font size="20.0"/>
+                  </font>
+                  <effect>
+                     <DropShadow/>
+                  </effect>
+               </Label>
+            </AnchorPane>
+         </Tab>
+         <Tab text="Baccara">
+            <content>
+               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                  <children>
+                     <Label layoutX="6.0" layoutY="8.0" prefHeight="30.0" prefWidth="49.0" text="Wins:">
+                        <font>
+                           <Font size="20.0"/>
+                        </font>
+                        <effect>
+                           <DropShadow/>
+                        </effect>
+                     </Label>
+                     <Label layoutX="6.0" layoutY="38.0" prefHeight="30.0" prefWidth="47.0" text="Lose:">
+                        <font>
+                           <Font size="20.0"/>
+                        </font>
+                        <effect>
+                           <DropShadow/>
+                        </effect>
+                     </Label>
+                     <Label layoutX="6.0" layoutY="68.0" prefHeight="30.0" prefWidth="64.0" text="Draws:">
+                        <font>
+                           <Font size="20.0"/>
+                        </font>
+                        <effect>
+                           <DropShadow/>
+                        </effect>
+                     </Label>
+                     <Label layoutX="33.0" layoutY="98.0" prefHeight="30.0" prefWidth="120.0" text="Total income">
+                        <font>
+                           <Font size="20.0"/>
+                        </font>
+                        <effect>
+                           <DropShadow/>
+                        </effect>
+                     </Label>
+                     <Label fx:id="BacTotalIncome" layoutX="33.0" layoutY="128.0" prefHeight="30.0"
+                            prefWidth="144.0" text="0">
+                        <font>
+                           <Font size="20.0"/>
+                        </font>
+                        <effect>
+                           <DropShadow/>
+                        </effect>
+                     </Label>
+                     <Label fx:id="BacWins" layoutX="72.0" layoutY="8.0" prefHeight="30.0" prefWidth="108.0"
+                            text="0">
+                        <font>
+                           <Font size="20.0"/>
+                        </font>
+                        <effect>
+                           <DropShadow/>
+                        </effect>
+                     </Label>
+                     <Label fx:id="BacLooses" layoutX="72.0" layoutY="38.0" prefHeight="30.0" prefWidth="108.0"
+                            text="0">
+                        <font>
+                           <Font size="20.0"/>
+                        </font>
+                        <effect>
+                           <DropShadow/>
+                        </effect>
+                     </Label>
+                     <Label fx:id="BacDraws" layoutX="72.0" layoutY="68.0" prefHeight="30.0" prefWidth="108.0"
+                            text="0">
+                        <font>
+                           <Font size="20.0"/>
+                        </font>
+                        <effect>
+                           <DropShadow/>
+                        </effect>
+                     </Label>
+                  </children>
+               </AnchorPane>
+            </content>
+         </Tab>
+         <Tab text="Roulette">
+            <content>
+               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                  <children>
+                     <Label layoutX="6.0" layoutY="8.0" prefHeight="30.0" prefWidth="51.0" text="Wins:">
+                        <font>
+                           <Font size="20.0"/>
+                        </font>
+                        <effect>
+                           <DropShadow/>
+                        </effect>
+                     </Label>
+                     <Label layoutX="6.0" layoutY="38.0" prefHeight="30.0" prefWidth="48.0" text="Lose:">
+                        <font>
+                           <Font size="20.0"/>
+                        </font>
+                        <effect>
+                           <DropShadow/>
+                        </effect>
+                     </Label>
+                     <Label layoutX="33.0" layoutY="98.0" prefHeight="30.0" prefWidth="120.0" text="Total income">
+                        <font>
+                           <Font size="20.0"/>
+                        </font>
+                        <effect>
+                           <DropShadow/>
+                        </effect>
+                     </Label>
+                     <Label fx:id="RouletteTotalIncome" layoutX="33.0" layoutY="128.0" prefHeight="30.0"
+                            prefWidth="150.0" text="0">
+                        <font>
+                           <Font size="20.0"/>
+                        </font>
+                        <effect>
+                           <DropShadow/>
+                        </effect>
+                     </Label>
+                     <Label fx:id="RouletteWins" layoutX="72.0" layoutY="8.0" prefHeight="30.0" prefWidth="108.0"
+                            text="0">
+                        <font>
+                           <Font size="20.0"/>
+                        </font>
+                        <effect>
+                           <DropShadow/>
+                        </effect>
+                     </Label>
+                     <Label fx:id="RouletteLooses" layoutX="72.0" layoutY="38.0" prefHeight="30.0"
+                            prefWidth="108.0" text="0">
+                        <font>
+                           <Font size="20.0"/>
+                        </font>
+                        <effect>
+                           <DropShadow/>
+                        </effect>
+                     </Label>
+                  </children>
+               </AnchorPane>
+            </content>
+         </Tab>
+      </TabPane>
+      <Label layoutX="27.0" layoutY="22.0" prefHeight="26.0" prefWidth="211.0" text="Statistic:">
+         <font>
+            <Font size="20.0"/>
          </font>
          <effect>
-            <DropShadow />
+            <DropShadow/>
          </effect>
       </Label>
-      <Label fx:id="nameLabel" layoutX="246.0" layoutY="-9.0" text="[Name] !" textFill="GOLD">
-         <font>
-            <Font name="Luminari" size="50.0" />
-         </font>
-         <effect>
-            <DropShadow />
-         </effect>
-      </Label>
-    </children>
+   </AnchorPane>
+   <Label layoutX="14.0" layoutY="-9.0" text="Welcome, " textFill="GOLD">
+      <font>
+         <Font name="Luminari" size="50.0"/>
+      </font>
+      <effect>
+         <DropShadow/>
+      </effect>
+   </Label>
+   <Label fx:id="nameLabel" layoutX="246.0" layoutY="-9.0" text="[Name] !" textFill="GOLD">
+      <font>
+         <Font name="Luminari" size="50.0"/>
+      </font>
+      <effect>
+         <DropShadow/>
+      </effect>
+   </Label>
 </AnchorPane>

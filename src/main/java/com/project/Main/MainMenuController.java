@@ -76,7 +76,7 @@ public class MainMenuController {
         RouletteWins.setText(IntToString(Stats[9]));
         RouletteLooses.setText(IntToString(Stats[10]));
         RouletteTotalIncome.setText(IntToString(Stats[11]));
-
+        nameLabel.setText(SingInController.Name + " !");
     }
 
     @FXML
