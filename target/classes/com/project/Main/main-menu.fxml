@@ -37,7 +37,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button fx:id="signOutButton" layoutX="46.0" layoutY="273.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="173.0" style="-fx-background-color: GOLD;" text="s i g n   o u t" textFill="MIDNIGHTBLUE">
+            <Button fx:id="signOutButton" layoutX="46.0" layoutY="273.0" mnemonicParsing="false" onAction="#BackToSingIn" prefHeight="54.0" prefWidth="173.0" style="-fx-background-color: GOLD;" text="s i g n   o u t" textFill="MIDNIGHTBLUE">
                <font>
                   <Font name="Luminari" size="18.0" />
                </font>

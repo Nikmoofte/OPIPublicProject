@@ -5,6 +5,7 @@ import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
+import com.project.roulette.RoulleteController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -15,12 +16,15 @@ import javafx.stage.Stage;
 
 public class MainMenuController {
 
-    public Label BacWins;
-    public Label BacLose;
-    public Label BacDraws;
-    public Label BacTotalIncome;
-    
+    public Label BacWins, BacLose, BacDraws, BacTotalIncome;
+    public Button signOutButton;
 
+    enum Stat_counter
+    {
+        stat_Wealth, stat_BacWins, stat_BacLose, stat_BacDraws, stat_BacTotalIncome;
+    }
+
+    public static int[] Stats = new int [SingInController.SizeOfAccountInfo - 2];
     @FXML
     private ResourceBundle resources;
 
@@ -35,27 +39,31 @@ public class MainMenuController {
 
     @FXML
     private Button plBlackjack;
+
+    @FXML
+    void initialize()
+    {
+
+    }
+
+    @FXML
+    void BackToSingIn() throws IOException {
+        signOutButton.getScene().getWindow().hide();
+        StartUp.CreateNewWindow(FXMLLoader.load(Objects.requireNonNull(StartUp.class.getResource("SingIn.fxml"))), 700, 400);
+    }
+
+
     @FXML
     void OpenRoullete() throws IOException {
         plRoulette.getScene().getWindow().hide();
-        Parent root = FXMLLoader.load(Objects.requireNonNull(com.project.roulette.RoulleteController.class.getResource("RoulleteWindow.fxml")));
-        Scene scene = new Scene(root, 700, 400);
-        Stage stage = new Stage();
-        stage.setTitle("Roullete");
-        stage.setScene(scene);
-        stage.setResizable(false);
-        stage.show();
+        StartUp.CreateNewWindow(FXMLLoader.load(Objects.requireNonNull(RoulleteController.class.getResource("RoulleteWindow.fxml"))), 700, 400);
+
     }
     @FXML
     void OpenBaccara() throws IOException {
         plBaccara.getScene().getWindow().hide();
-        Parent root = FXMLLoader.load(Objects.requireNonNull(com.project.bakkara.baccaraController.class.getResource("baccaraWindow.fxml")));
-        Scene scene = new Scene(root, 900, 600);
-        Stage stage = new Stage();
-        stage.setTitle("Baccara");
-        stage.setScene(scene);
-        stage.setResizable(false);
-        stage.show();
+        StartUp.CreateNewWindow(FXMLLoader.load(Objects.requireNonNull(com.project.bakkara.baccaraController.class.getResource("baccaraWindow.fxml"))),900, 600);
+
     }
 
 }

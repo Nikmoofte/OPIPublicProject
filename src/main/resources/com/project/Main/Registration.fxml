@@ -24,7 +24,7 @@
                 <Cursor fx:constant="TEXT" />
             </cursor>
         </PasswordField>
-        <Button fx:id="signUpButtonReg" layoutX="14.0" layoutY="229.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="202.0" style="-fx-background-color: #FFD700#FFD700;" text="s i g n   u p" textAlignment="CENTER" textFill="MIDNIGHTBLUE">
+        <Button fx:id="signUpButtonReg" layoutX="14.0" layoutY="229.0" mnemonicParsing="false" onAction="#Registrate" prefHeight="46.0" prefWidth="202.0" style="-fx-background-color: #FFD700#FFD700;" text="s i g n   u p" textAlignment="CENTER" textFill="MIDNIGHTBLUE">
             <font>
                 <Font name="Luminari" size="17.0" />
             </font>
@@ -40,6 +40,11 @@
                 <Cursor fx:constant="TEXT" />
             </cursor>
         </PasswordField>
+      <Label fx:id="IOErrorMessage" layoutX="14.0" layoutY="168.0" textFill="RED">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
     </AnchorPane>
     <Label layoutX="14.0" text="P.R.O.J.E.C.T. Casino" textFill="GOLD">
         <font>
@@ -49,7 +54,7 @@
         <DropShadow />
         </effect>
     </Label>
-     <Button fx:id="goBackButton" layoutX="506.0" layoutY="17.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="179.0" style="-fx-background-color: #FFD700#FFD700 #FFD700#FFD700;" text="b a c k" textFill="MIDNIGHTBLUE">
+     <Button fx:id="goBackButton" layoutX="506.0" layoutY="17.0" mnemonicParsing="false" onAction="#BackToSingIn" prefHeight="46.0" prefWidth="179.0" style="-fx-background-color: #FFD700#FFD700 #FFD700#FFD700;" text="b a c k" textFill="MIDNIGHTBLUE">
          <font>
              <Font name="Luminari" size="17.0" />
          </font>
