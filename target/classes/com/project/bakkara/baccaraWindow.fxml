@@ -8,14 +8,11 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0"
-      prefWidth="800.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="com.project.bakkara.baccaraController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.project.bakkara.baccaraController">
    <cursor>
-      <Cursor fx:constant="DEFAULT"/>
+      <Cursor fx:constant="DEFAULT" />
    </cursor>
-   <Button fx:id="PlayButton" layoutX="24.0" layoutY="511.0" mnemonicParsing="false" onAction="#Play" prefHeight="50.0"
-           prefWidth="100.0" text="Play"/>
+   <Button fx:id="PlayButton" layoutX="24.0" layoutY="511.0" mnemonicParsing="false" onAction="#Play" prefHeight="50.0" prefWidth="100.0" text="Play" />
    <Text layoutX="660.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Score">
       <font>
          <Font size="36.0" />
@@ -23,40 +20,39 @@
    </Text>
    <Text fx:id="PlayerScore" layoutX="690.0" layoutY="441.0" strokeType="OUTSIDE" strokeWidth="0.0">
       <font>
-         <Font size="72.0"/>
+         <Font size="72.0" />
       </font>
    </Text>
    <Text fx:id="OpponentScore" layoutX="690.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0">
       <font>
-         <Font size="72.0"/>
+         <Font size="72.0" />
       </font>
    </Text>
    <Text fx:id="StateMessage" layoutX="360.0" layoutY="289.0" strokeType="OUTSIDE" strokeWidth="0.0">
       <font>
-         <Font size="36.0"/>
+         <Font size="36.0" />
       </font>
    </Text>
-   <Button fx:id="PassButton" layoutX="193.0" layoutY="250.0" mnemonicParsing="false" onAction="#Pass"
-           prefHeight="50.0" prefWidth="100.0" text="Pass" visible="false"/>
-   <Button fx:id="AOneButton" layoutX="494.0" layoutY="250.0" mnemonicParsing="false" onAction="#AnotherOne"
-           prefHeight="50.0" prefWidth="100.0" text="Another One" visible="false"/>
+   <Button fx:id="PassButton" layoutX="193.0" layoutY="250.0" mnemonicParsing="false" onAction="#Pass" prefHeight="50.0" prefWidth="100.0" text="Pass" visible="false" />
+   <Button fx:id="AOneButton" layoutX="494.0" layoutY="250.0" mnemonicParsing="false" onAction="#AnotherOne" prefHeight="50.0" prefWidth="100.0" text="Another One" visible="false" />
    <ImageView fx:id="PlayerFirstCard" fitHeight="200.0" fitWidth="137.0" layoutX="325.0" layoutY="336.0">
-      <Image url="@/Back.png"/>
+      <Image url="@/Back.png" />
    </ImageView>
    <ImageView fx:id="PlayerSecondCard" fitHeight="200.0" fitWidth="137.0" layoutX="475.0" layoutY="336.0">
-      <Image url="@/Back.png"/>
+      <Image url="@/Back.png" />
    </ImageView>
    <ImageView fx:id="PlayerThirdCard" fitHeight="200.0" fitWidth="137.0" layoutX="174.0" layoutY="336.0">
-      <Image url="@/Back.png"/>
+      <Image url="@/Back.png" />
    </ImageView>
    <ImageView fx:id="OpponentThirdCard" fitHeight="200.0" fitWidth="137.0" layoutX="174.0" layoutY="22.0">
-      <Image url="@/Back.png"/>
+      <Image url="@/Back.png" />
    </ImageView>
    <ImageView fx:id="OpponentFirstCard" fitHeight="200.0" fitWidth="137.0" layoutX="476.0" layoutY="21.0">
-      <Image url="@/Back.png"/>
+      <Image url="@/Back.png" />
    </ImageView>
    <ImageView fx:id="OpponentSecondCard" fitHeight="200.0" fitWidth="137.0" layoutX="325.0" layoutY="22.0">
-      <Image url="@/Back.png"/>
+      <Image url="@/Back.png" />
    </ImageView>
+   <Button fx:id="BetButton" layoutX="24.0" layoutY="434.0" mnemonicParsing="false" onAction="#OpenBetWindow" prefHeight="50.0" prefWidth="100.0" text="Bet" />
 
 </Pane>

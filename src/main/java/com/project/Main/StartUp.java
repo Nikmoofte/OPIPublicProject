@@ -18,7 +18,7 @@ public class StartUp extends Application {
     {
         Scene scene = new Scene(window, w, h);
         Stage stage = new Stage();
-        stage.setTitle("P.R.O.J.E.C.T Casino");
+        stage.setTitle(ProgramName);
         stage.setScene(scene);
         stage.setResizable(false);
         stage.show();

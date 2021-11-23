@@ -20,9 +20,6 @@ public class RegistrationController {
     private PasswordField reg_password1;
 
     @FXML
-    private Button signUpButtonReg;
-
-    @FXML
     private PasswordField reg_password2;
 
 

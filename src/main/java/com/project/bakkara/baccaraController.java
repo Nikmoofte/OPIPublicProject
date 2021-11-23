@@ -1,14 +1,20 @@
 package com.project.bakkara;
 
+import com.project.Main.StartUp;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import com.project.bakkara.Card.Card;
 
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 
+import java.io.IOException;
 import java.security.SecureRandom;
+import java.util.Objects;
 
 
 public class baccaraController
@@ -20,6 +26,8 @@ public class baccaraController
     public ImageView OpponentFirstCard;
     public ImageView OpponentSecondCard;
     public ImageView OpponentThirdCard;
+    public TextField BetValue;
+    public Button BackBetButton;
     Image BackCardImage;
     public Text PlayerScore;
     public Text OpponentScore;
@@ -144,5 +152,14 @@ public class baccaraController
         i_playerscore %= 10;
         ScoreUpdate();
         Pass();
+    }
+    public void CloseBetWindow()
+    {
+        BackBetButton.getScene().getWindow().hide();
+    }
+
+    public void OpenBetWindow() throws IOException
+    {
+        StartUp.CreateNewWindow(FXMLLoader.load(Objects.requireNonNull(com.project.bakkara.baccaraController.class.getResource("BetWindow.fxml"))), 400, 200);
     }
 }

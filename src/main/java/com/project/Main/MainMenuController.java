@@ -1,5 +1,8 @@
 package com.project.Main;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 
 import java.util.Objects;
@@ -14,7 +17,6 @@ import javafx.scene.control.Label;
 public class MainMenuController {
 
     public Button signOutButton;
-
 
     public static int[] Stats = new int[SingInController.SizeOfAccountInfo - 2];
 
@@ -63,11 +65,50 @@ public class MainMenuController {
     @FXML
     private Label nameLabel;
 
-    @FXML
-    private Label Money;
 
     @FXML
-    void initialize() {
+    private Label Money;
+    private static String lineCreate()
+    {
+        String line = "" + Stats[2];
+        for(int i = 3; i < SingInController.SizeOfAccountInfo - 2; i++)
+            line += " " + Stats[i];
+        return line;
+    }
+
+    public static void StatsUpdate() throws IOException
+    {
+        String line = lineCreate();
+        FileReader readfile = new FileReader("Accounts.txt");
+        BufferedReader reader = new BufferedReader(readfile);
+        String readed = "", password = "";
+
+        int counter = 0;
+        {
+            String temp;
+            while ((temp = reader.readLine()) != null)
+            {
+                counter++;
+                if (counter != SingInController.lineCount)
+                    readed += "\n" + temp;
+                else
+                    password = temp.split("")[1];
+            }
+
+        }
+        readfile.close();
+        reader.close();
+
+
+        FileWriter file = new FileWriter("Accounts.txt");
+        file.write(readed);
+        file.append(SingInController.Name + " " + password + " " + line);
+        file.close();
+    }
+
+    @FXML
+    void initialize()
+    {
         BlackWins.setText(IntToString(Stats[1]));
         BlackLooses.setText(IntToString(Stats[2]));
         BlackDraws.setText(IntToString(Stats[3]));
@@ -79,14 +120,15 @@ public class MainMenuController {
         RouletteWins.setText(IntToString(Stats[9]));
         RouletteLooses.setText(IntToString(Stats[10]));
         RouletteTotalIncome.setText(IntToString(Stats[11]));
+
+
+
         nameLabel.setText(SingInController.Name + " !");
         Money.setText(IntToString(Stats[0]));
     }
 
-    @FXML
     private String IntToString(int stat) {
-        String statStr = Integer.toString(stat);
-        return statStr;
+        return Integer.toString(stat);
     }
 
     @FXML
