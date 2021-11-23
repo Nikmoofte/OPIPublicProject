@@ -1,12 +1,17 @@
 package com.project.roulette;
 
+import com.project.Main.StartUp;
 import javafx.animation.RotateTransition;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;
+
+import java.io.IOException;
+import java.util.Objects;
 
 public class RoulleteController {
     int Account = 100, Sector, bet, Angle, wins = 1, looses = 1;
@@ -71,6 +76,15 @@ public class RoulleteController {
 
     @FXML
     private Label WinLooseLb;
+
+    @FXML
+    private Button MainMenu;
+
+    @FXML
+    void MainMenu() throws IOException {
+        MainMenu.getScene().getWindow().hide();
+        StartUp.CreateNewWindow(FXMLLoader.load(Objects.requireNonNull(StartUp.class.getResource("main-menu.fxml"))), 700, 500);
+    }
 
     private int getValidBet() throws Exception {
         int num = Integer.parseInt(BetTxtField.getText());
