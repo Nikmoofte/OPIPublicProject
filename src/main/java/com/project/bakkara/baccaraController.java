@@ -2,7 +2,6 @@ package com.project.bakkara;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import com.project.bakkara.Card.Card;
 
 import javafx.scene.image.Image;

@@ -2,11 +2,9 @@ package com.project.Main;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
+
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
@@ -16,7 +14,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 
 
 
@@ -40,7 +37,7 @@ public class SingInController {
     @FXML
     private Button signUpButton;
 
-    public static final int SizeOfAccountInfo = 7;
+    public static final int SizeOfAccountInfo = 14;
     public static boolean Login(String login, String password) throws IOException {
         FileReader accounts = new FileReader("Accounts.txt");
         BufferedReader reader = new BufferedReader(accounts);
@@ -71,18 +68,11 @@ public class SingInController {
     void initialize() {
         signUpButton.setOnAction(actionEvent -> {
             signUpButton.getScene().getWindow().hide();
-            FXMLLoader fxmlLoader = new FXMLLoader(SingInController.class.getResource("Registration.fxml"));
-            Scene scene = null;
             try {
-                scene = new Scene(fxmlLoader.load(), 700, 400);
+                StartUp.CreateNewWindow(FXMLLoader.load(Objects.requireNonNull(SingInController.class.getResource("Registration.fxml"))), 700, 400);
             } catch (IOException e) {
-                e.printStackTrace();
             }
-            Stage stage = new Stage();
-            stage.setTitle("Registration");
-            stage.setScene(scene);
-            stage.setResizable(false);
-            stage.show();
+
 
         });
         signInButton.setOnAction(actionEvent -> {
@@ -91,30 +81,15 @@ public class SingInController {
                 if(Login(login, password))
                 {
                     signInButton.getScene().getWindow().hide();
-                    StartUp.CreateNewWindow(FXMLLoader.load(StartUp.class.getResource("main-menu.fxml")), 700, 500);
+                    StartUp.CreateNewWindow(FXMLLoader.load(Objects.requireNonNull(StartUp.class.getResource("main-menu.fxml"))), 700, 500);
                 }
                 else
                 {
                     IOErrorMessage.setText("Invalid login or password");
                 }
             } catch (IOException e) {
-                e.printStackTrace();
             }
-//            if(!(Objects.equals(login,"admin") && Objects.equals(password,"admin"))){
-//                signUpButton.getScene().getWindow().hide();
-//                FXMLLoader fxmlLoader = new FXMLLoader(SingInController.class.getResource("main-menu.fxml"));
-//                Scene scene = null;
-//                try {
-//                    scene = new Scene(fxmlLoader.load(), 700, 500);
-//                } catch (IOException e) {
-//                    e.printStackTrace();
-//                }
-//                Stage stage = new Stage();
-//                stage.setTitle("Main Menu");
-//                stage.setScene(scene);
-//                stage.setResizable(false);
-//                stage.show();
-//            }
+
         });
 
     }

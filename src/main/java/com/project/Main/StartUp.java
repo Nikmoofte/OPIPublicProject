@@ -6,12 +6,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
-
+import java.util.Objects;
 
 
 public class StartUp extends Application {
@@ -31,7 +27,7 @@ public class StartUp extends Application {
     @Override
     public void start(Stage stage) throws IOException
     {
-        CreateNewWindow(FXMLLoader.load(StartUp.class.getResource("SingIn.fxml")), 700, 400);
+        CreateNewWindow(FXMLLoader.load(Objects.requireNonNull(StartUp.class.getResource("SingIn.fxml"))), 700, 400);
     }
 
     public static void main(String[] args) {
