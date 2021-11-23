@@ -36,7 +36,7 @@ public class SingInController {
 
     @FXML
     private Button signUpButton;
-
+    public static String Name;
     public static final int SizeOfAccountInfo = 14;
     public static boolean Login(String login, String password) throws IOException {
         FileReader accounts = new FileReader("Accounts.txt");
@@ -80,6 +80,7 @@ public class SingInController {
             try {
                 if(Login(login, password))
                 {
+                    Name = login;
                     signInButton.getScene().getWindow().hide();
                     StartUp.CreateNewWindow(FXMLLoader.load(Objects.requireNonNull(StartUp.class.getResource("main-menu.fxml"))), 700, 500);
                 }
