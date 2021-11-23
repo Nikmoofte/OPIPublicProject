@@ -80,6 +80,7 @@ public class MainMenuController {
         RouletteLooses.setText(IntToString(Stats[10]));
         RouletteTotalIncome.setText(IntToString(Stats[11]));
         nameLabel.setText(SingInController.Name + " !");
+        Money.setText(IntToString(Stats[0]));
     }
 
     @FXML
