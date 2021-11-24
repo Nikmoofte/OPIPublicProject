@@ -8,11 +8,16 @@ import java.io.IOException;
 import java.util.Objects;
 
 
+import com.project.bakkara.baccaraController;
 import com.project.roulette.RoulleteController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+
+
 
 public class MainMenuController {
 
@@ -70,8 +75,8 @@ public class MainMenuController {
     private Label Money;
     private static String lineCreate()
     {
-        String line = "" + Stats[2];
-        for(int i = 3; i < SingInController.SizeOfAccountInfo - 2; i++)
+        String line = "" + Stats[0];
+        for(int i = 1; i < SingInController.SizeOfAccountInfo - 2; i++)
             line += " " + Stats[i];
         return line;
     }
@@ -90,12 +95,13 @@ public class MainMenuController {
             {
                 counter++;
                 if (counter != SingInController.lineCount)
-                    readed += "\n" + temp;
+                    readed += temp + "\n";
                 else
-                    password = temp.split("")[1];
+                    password = temp.split(" ")[1];
             }
 
         }
+
         readfile.close();
         reader.close();
 
@@ -127,9 +133,10 @@ public class MainMenuController {
         Money.setText(IntToString(Stats[0]));
     }
 
-    private String IntToString(int stat) {
+    public static String IntToString(int stat) {
         return Integer.toString(stat);
     }
+    public static int StringToInt (String str) {return Integer.parseInt(str);}
 
     @FXML
     void BackToSingIn() throws IOException {
@@ -146,9 +153,12 @@ public class MainMenuController {
     }
 
     @FXML
-    void OpenBaccara() throws IOException {
+    void OpenBaccara() throws IOException
+    {
+
         plBaccara.getScene().getWindow().hide();
-        StartUp.CreateNewWindow(FXMLLoader.load(Objects.requireNonNull(com.project.bakkara.baccaraController.class.getResource("baccaraWindow.fxml"))), 900, 600);
+        Parent Window = FXMLLoader.load(Objects.requireNonNull(baccaraController.class.getResource("baccaraWindow.fxml")));
+        StartUp.CreateNewWindow(Window, 900, 600);
 
     }
 

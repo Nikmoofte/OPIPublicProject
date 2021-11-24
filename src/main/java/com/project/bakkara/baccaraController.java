@@ -1,7 +1,7 @@
 package com.project.bakkara;
 
+import com.project.Main.MainMenuController;
 import com.project.Main.StartUp;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -12,6 +12,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -28,9 +29,10 @@ public class baccaraController
     public ImageView OpponentFirstCard;
     public ImageView OpponentSecondCard;
     public ImageView OpponentThirdCard;
-    public TextField BetValue;
-    public Button BackBetButton;
     public Button BetButton;
+    public Button BackButton;
+    public static Text BetVal;
+    public Text Money;
     Image BackCardImage;
     public Text PlayerScore;
     public Text OpponentScore;
@@ -39,11 +41,17 @@ public class baccaraController
     public Button PlayButton;
     public Button PassButton;
     public Button AOneButton;
-
+    static int val = 0;
 
     private int
             i_playerscore,
             i_opponentscore;
+    @FXML
+    void initialize()
+    {
+        val = 0;
+        Money.setText("" + MainMenuController.Stats[0]);
+    }
 
     void LastDefine()
     {
@@ -54,20 +62,47 @@ public class baccaraController
         else
             DeclarePlWin();
     }
+    enum state
+    {
+        Win, Lose, Draw
+    }
+    public static state BetState;
+    void Ending(state State)
+    {
+        int Income;
+        if (BetState.equals(state.Draw))
+            Income = 9*val;
+        else
+            Income = val;
+        if(!State.equals(BetState))
+            Income = -val;
+
+        MainMenuController.Stats[0] += Income;
+        Money.setText("" + MainMenuController.Stats[0]);
+        MainMenuController.Stats[5 + BetState.ordinal()]++;
+        try {
+            MainMenuController.StatsUpdate();
+        } catch (IOException e) {
+            System.out.println("Status update Error!");
+        }
+    }
     void DeclareDraw()
     {
         ResetButtons();
         StateMessage.setText("Draw");
+        Ending(state.Draw);
     }
     void DeclarePlWin()
     {
         ResetButtons();
         StateMessage.setText("Win");
+        Ending(state.Win);
     }
     void DeclareOppWin()
     {
         ResetButtons();
         StateMessage.setText("Lose");
+        Ending(state.Lose);
     }
     void ResetButtons()
     {
@@ -133,6 +168,11 @@ public class baccaraController
         }
     }
 
+    public void ToMineMenu() throws IOException
+    {
+        BackButton.getScene().getWindow().hide();
+        StartUp.CreateNewWindow(FXMLLoader.load(Objects.requireNonNull(MainMenuController.class.getResource("main-menu.fxml"))), 700, 500);
+    }
 
     public void Pass()
     {
@@ -149,8 +189,7 @@ public class baccaraController
         PassButton.setVisible(false);
     }
 
-    public void AnotherOne()
-    {
+    public void AnotherOne() {
         Card PlayerCard3 = GenerateCard();
         PlayerThirdCard.setImage(new Image(PlayerCard3.GetCard() + ".png"));
         i_playerscore += ((PlayerCard3.GetRank() > 8) ? 0 : (PlayerCard3.GetRank() + 1));
@@ -158,23 +197,21 @@ public class baccaraController
         ScoreUpdate();
         Pass();
     }
-    private Scene temp;
 
-    public void CloseBetWindow() throws IOException
-    {
-        BackBetButton.getScene().getWindow().hide();
 
-        FXMLLoader.load(Objects.requireNonNull(baccaraController.class.getResource("baccaraWindow.fxml")));
-
-        PlayButton.setVisible(true);
-        BetButton.setVisible(true);
-    }
 
     public void OpenBetWindow() throws IOException
     {
 
-        PlayButton.setVisible(false);
-        BetButton.setVisible(false);
-        StartUp.CreateNewWindow(FXMLLoader.load(Objects.requireNonNull(com.project.bakkara.baccaraController.class.getResource("BetWindow.fxml"))), 400, 200);
+
+        //StartUp.CreateNewWindow(FXMLLoader.load(Objects.requireNonNull(com.project.bakkara.baccaraController.class.getResource("betWindow.fxml"))), 400, 200);
+        Scene scene = new Scene(FXMLLoader.load(Objects.requireNonNull(bacBetController.class.getResource("betWindow.fxml"))), 400, 200);
+        Stage BetStage = new Stage();
+        BetStage.setScene(scene);
+        BetStage.setResizable(false);
+        BetStage.setTitle(StartUp.ProgramName);
+        BetStage.initOwner(PlayButton.getScene().getWindow());
+        BetStage.initModality(Modality.WINDOW_MODAL);
+        BetStage.show();
     }
 }
