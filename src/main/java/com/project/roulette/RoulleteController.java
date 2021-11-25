@@ -1,5 +1,6 @@
 package com.project.roulette;
 
+import com.project.Main.MainMenuController;
 import com.project.Main.StartUp;
 import javafx.animation.RotateTransition;
 import javafx.fxml.FXML;
@@ -14,7 +15,7 @@ import java.io.IOException;
 import java.util.Objects;
 
 public class RoulleteController {
-    int Account = 100, Sector, bet, Angle, wins = 1, looses = 1;
+    int Account = MainMenuController.Stats[0], Sector, bet, Angle, wins = 1, looses = 1;
 
 
     boolean SectorChoice, EvenOddChoice, RangeChoice, ColorChoice, Even, Odd, FirstRange, SecondRange, Red, Black;
@@ -88,14 +89,10 @@ public class RoulleteController {
 
     private int getValidBet() throws Exception {
         int num = Integer.parseInt(BetTxtField.getText());
-        if  (num > this.Account) {
+        if (num > this.Account) {
             throw new Exception();
         }
         if (num <= 0) {
-            throw new Exception();
-        }
-
-        if ((num < 5) || (num > 10)) {
             throw new Exception();
         }
         return num;
@@ -115,7 +112,7 @@ public class RoulleteController {
 
 
         } catch (Exception e) {
-            BetTxtField.setText("Enter integer number from 5 to 10");
+            BetTxtField.setText("Enter integer number");
         }
     }
 
@@ -149,7 +146,7 @@ public class RoulleteController {
             });
 
         } catch (Exception e) {
-            BetTxtField.setText("Enter integer number from 5 to 10");
+            BetTxtField.setText("Enter integer number");
         }
     }
 
@@ -181,7 +178,7 @@ public class RoulleteController {
 
             });
         } catch (Exception e) {
-            BetTxtField.setText("Enter integer number from 5 to 10");
+            BetTxtField.setText("Enter integer number");
         }
     }
 
@@ -213,7 +210,7 @@ public class RoulleteController {
 
             });
         } catch (Exception e) {
-            BetTxtField.setText("Enter integer number from 5 to 10");
+            BetTxtField.setText("Enter integer number");
         }
     }
 
@@ -234,7 +231,15 @@ public class RoulleteController {
             case (3) -> {
                 WinLooseLb.setText("INCREDIBLE!!!!!!!");
                 wins--;
+
             }
+        }
+        MainMenuController.Stats[9]++;
+        MainMenuController.Stats[11] += bet;
+        try {
+            MainMenuController.StatsUpdate();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
         wins++;
     }
@@ -249,6 +254,13 @@ public class RoulleteController {
                 WinLooseLb.setText("FUCK!!!!!");
                 looses--;
             }
+        }
+        MainMenuController.Stats[10]++;
+        MainMenuController.Stats[11] -= bet;
+        try {
+            MainMenuController.StatsUpdate();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
         looses++;
     }
@@ -378,6 +390,12 @@ public class RoulleteController {
             ColorBt.setDisable(false);
             InputSectorTxtField.setText("Input your sector");
             BetTxtField.setText("");
+            MainMenuController.Stats[0] = Account;
+            try {
+                MainMenuController.StatsUpdate();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
             accountStr = Integer.toString(Account);
             AccountLb.setText(accountStr);
             SectorChoice = false;

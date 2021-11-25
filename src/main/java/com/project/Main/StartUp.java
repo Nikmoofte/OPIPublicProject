@@ -21,14 +21,6 @@ public class StartUp extends Application {
         stage.setTitle(ProgramName);
         stage.setScene(scene);
         stage.setResizable(false);
-        stage.setOnCloseRequest(ActionEvent->{
-            try {
-                MainMenuController.StatsUpdate();
-            } catch (IOException e) {
-                System.out.println("Stats update error!");
-            }
-        });
-
         stage.show();
     }
 

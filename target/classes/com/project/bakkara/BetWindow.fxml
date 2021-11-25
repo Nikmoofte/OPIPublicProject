@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.MenuButton?>
-<?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="200.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.project.bakkara.bacBetController">
+<AnchorPane prefHeight="200.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.project.bakkara.bacBetController">
    <children>
-      <Button onAction="#Betting" layoutX="277.0" layoutY="123.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="86.0" text="Bet" />
+      <Button layoutX="277.0" layoutY="123.0" mnemonicParsing="false" onAction="#Betting" prefHeight="48.0" prefWidth="86.0" text="Bet" />
       <Button fx:id="BackBetButton" layoutX="42.0" layoutY="123.0" mnemonicParsing="false" onAction="#CloseBetWindow" prefHeight="48.0" prefWidth="86.0" text="Back" />
       <TextField fx:id="BetField" layoutX="72.0" layoutY="41.0" prefHeight="48.0" prefWidth="257.0" promptText="Input Your Bet">
          <font>
@@ -23,5 +20,6 @@
             <MenuItem fx:id="DrawBet" mnemonicParsing="false" text="On Draw" />
         </items>
       </MenuButton>
+      <Label fx:id="IOErrorMessage" layoutX="138.0" layoutY="139.0" prefHeight="17.0" prefWidth="125.0" textFill="RED" />
    </children>
 </AnchorPane>
