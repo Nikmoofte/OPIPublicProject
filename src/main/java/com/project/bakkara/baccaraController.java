@@ -8,7 +8,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import com.project.bakkara.Card.Card;
 
-import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
@@ -71,7 +70,7 @@ public class baccaraController
     {
         int Income;
         if (BetState.equals(state.Draw))
-            Income = 9*val;
+            Income = 9 * val;
         else
             Income = val;
         if(!State.equals(BetState))
@@ -79,7 +78,8 @@ public class baccaraController
 
         MainMenuController.Stats[0] += Income;
         Money.setText("" + MainMenuController.Stats[0]);
-        MainMenuController.Stats[5 + BetState.ordinal()]++;
+        MainMenuController.Stats[5 + State.ordinal()]++;
+        MainMenuController.Stats[8] += Income;
         try {
             MainMenuController.StatsUpdate();
         } catch (IOException e) {
