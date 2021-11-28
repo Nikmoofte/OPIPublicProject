@@ -12,7 +12,6 @@ import javafx.scene.image.ImageView;
 import javafx.util.Duration;
 
 import java.io.IOException;
-import java.util.Date;
 import java.util.Objects;
 
 public class RoulleteController {

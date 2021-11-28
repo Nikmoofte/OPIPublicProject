@@ -45,9 +45,9 @@ public class baccaraController
     public Button AOneButton;
     static int val = 0;
 
-    private int
-            i_playerscore,
-            i_opponentscore;
+    int
+            i_playerscore;
+    int i_opponentscore;
 
     /**
      * setting the initial values
