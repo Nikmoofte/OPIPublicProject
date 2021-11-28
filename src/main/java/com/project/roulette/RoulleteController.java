@@ -240,7 +240,7 @@ public class RoulleteController {
         try {
             MainMenuController.StatsUpdate();
         } catch (IOException e) {
-            e.printStackTrace();
+
         }
         wins++;
     }
@@ -261,7 +261,7 @@ public class RoulleteController {
         try {
             MainMenuController.StatsUpdate();
         } catch (IOException e) {
-            e.printStackTrace();
+
         }
         looses++;
     }
@@ -402,7 +402,7 @@ public class RoulleteController {
             try {
                 MainMenuController.StatsUpdate();
             } catch (IOException e) {
-                e.printStackTrace();
+
             }
             accountStr = Integer.toString(Account);
             AccountLb.setText(accountStr);
