@@ -19,7 +19,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Button fx:id="plRoulette" layoutX="450.0" layoutY="229.0" mnemonicParsing="false" onAction="#OpenRoullete" prefHeight="71.0" prefWidth="195.0" style="-fx-background-color: #ffd700;" text="ROULETTE" textFill="MIDNIGHTBLUE">
+      <Button fx:id="plRoulette" layoutX="450.0" layoutY="229.0" mnemonicParsing="false" onAction="#OpenRoulette" prefHeight="71.0" prefWidth="195.0" style="-fx-background-color: #ffd700;" text="ROULETTE" textFill="MIDNIGHTBLUE">
          <font>
             <Font size="24.0" />
          </font>

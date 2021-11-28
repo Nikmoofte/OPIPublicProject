@@ -19,6 +19,9 @@ import java.security.SecureRandom;
 import java.util.Objects;
 
 
+/**
+ * Controls baccara window
+ */
 public class baccaraController
 {
     private static final SecureRandom rand = new SecureRandom();
@@ -45,6 +48,10 @@ public class baccaraController
     private int
             i_playerscore,
             i_opponentscore;
+
+    /**
+     * setting the initial values
+     */
     @FXML
     void initialize()
     {
@@ -52,6 +59,9 @@ public class baccaraController
         Money.setText("" + MainMenuController.Stats[0]);
     }
 
+    /**
+     * Last check of player's and opponent's scores
+     */
     void LastDefine()
     {
         if (i_opponentscore > i_playerscore)
@@ -66,6 +76,11 @@ public class baccaraController
         Win, Lose, Draw
     }
     public static state BetState;
+
+    /**
+     * Changing statistics
+     * @param State Current state of game(Win/Lose/Draw)
+     */
     void Ending(state State)
     {
         int Income;
@@ -86,24 +101,40 @@ public class baccaraController
             System.out.println("Status update Error!");
         }
     }
+
+    /**
+     * Declares Draw and calling Ending func with Draw state
+     */
     void DeclareDraw()
     {
         ResetButtons();
         StateMessage.setText("Draw");
         Ending(state.Draw);
     }
+
+    /**
+     * Declares player win and calling Ending func with Win state
+     */
     void DeclarePlWin()
     {
         ResetButtons();
         StateMessage.setText("Win");
         Ending(state.Win);
     }
+
+    /**
+     * Declares Opponent's win and calling Ending func with Lose state
+     */
     void DeclareOppWin()
     {
         ResetButtons();
         StateMessage.setText("Lose");
         Ending(state.Lose);
     }
+
+    /**
+     * Reset buttons to initial states
+     */
     void ResetButtons()
     {
         AOneButton.setVisible(false);
@@ -111,6 +142,10 @@ public class baccaraController
         PlayButton.setVisible(true);
         BetButton.setVisible(true);
     }
+
+    /**
+     * Resets cards and text to initial states
+     */
     void Clear()
     {
         BackCardImage = new Image("Back.png");
@@ -122,16 +157,32 @@ public class baccaraController
         OpponentThirdCard.setImage(BackCardImage);
         StateMessage.setText("");
     }
+
+    /**
+     * Generates new card
+     * @return new card
+     */
     Card GenerateCard()
     {
         return new Card(rand.nextInt(4), rand.nextInt(13));
     }
+
+    /**
+     * Updating score in window
+     */
     void ScoreUpdate()
     {
         PlayerScore.setText(/*"Player Score :" + */"" + i_playerscore);
         OpponentScore.setText(/*"Opponent Score :" + */"" + i_opponentscore);
 
     }
+
+    /**
+     * Play button func:
+     * Generating 4 cards
+     * Calculating scores
+     * And deciding what to do next
+     */
     @FXML
     protected void Play()
     {
@@ -168,12 +219,19 @@ public class baccaraController
         }
     }
 
+    /**
+     * Opens Main menu
+     * @throws IOException
+     */
     public void ToMineMenu() throws IOException
     {
         BackButton.getScene().getWindow().hide();
         StartUp.CreateNewWindow(FXMLLoader.load(Objects.requireNonNull(MainMenuController.class.getResource("main-menu.fxml"))), 700, 500);
     }
 
+    /**
+     * Activating opponents "AI" and calling Last define
+     */
     public void Pass()
     {
         if (i_playerscore >= i_opponentscore && i_opponentscore < 7)
@@ -189,6 +247,10 @@ public class baccaraController
         PassButton.setVisible(false);
     }
 
+    /**
+     * Adding Another card to player and updating scores
+     * Calling Pass func
+     */
     public void AnotherOne() {
         Card PlayerCard3 = GenerateCard();
         PlayerThirdCard.setImage(new Image(PlayerCard3.GetCard() + ".png"));

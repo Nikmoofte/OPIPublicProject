@@ -16,7 +16,9 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
 
-
+/**
+ * Control the Sting In window
+ */
 public class SingInController {
     public Label IOErrorMessage;
 
@@ -34,6 +36,14 @@ public class SingInController {
     public static String Name;
     public static final int SizeOfAccountInfo = 14;
     public static int lineCount;
+
+    /**
+     * Checking login and password and loading account statistic into Stats arr
+     * @param login
+     * @param password
+     * @return True if login and password are valid and false else
+     * @throws IOException If something wrong
+     */
     public static boolean Login(String login, String password) throws IOException {
         FileReader accounts = new FileReader("Accounts.txt");
         BufferedReader reader = new BufferedReader(accounts);
@@ -60,6 +70,12 @@ public class SingInController {
         lineCount = 0;
         return false;
     }
+
+    /**
+     * Sets actions on buttons
+     * Open Registration window
+     * Open Main Menu window if password is valid
+     */
     @FXML
     void initialize() {
         lineCount = 0;
@@ -68,6 +84,7 @@ public class SingInController {
             try {
                 StartUp.CreateNewWindow(FXMLLoader.load(Objects.requireNonNull(SingInController.class.getResource("Registration.fxml"))), 700, 400);
             } catch (IOException e) {
+                System.out.println("");
             }
 
 
@@ -86,6 +103,7 @@ public class SingInController {
                     IOErrorMessage.setText("Invalid login or password");
                 }
             } catch (IOException e) {
+                System.out.println("Error occured in login part");
             }
 
         });

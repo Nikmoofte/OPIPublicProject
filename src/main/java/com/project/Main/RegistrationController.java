@@ -7,9 +7,12 @@ import java.util.Objects;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
+import javafx.scene.paint.Color;
 
 
-
+/**
+ * Control the registration window
+ */
 public class RegistrationController {
 
     public Label IOErrorMessage;
@@ -27,6 +30,9 @@ public class RegistrationController {
     private Button goBackButton;
 
 
+    /**
+     * Opens SingIn window
+     */
     @FXML
     public void BackToSingIn()
     {
@@ -37,6 +43,12 @@ public class RegistrationController {
             e.printStackTrace();
         }
     }
+
+    /**
+     * Checking whether the login is free
+     * @param accounts all accounts
+     * @return whether the login is free
+     */
      private boolean ValidityCheck(String accounts)
      {
          for(String s : accounts.split("\n"))
@@ -44,6 +56,13 @@ public class RegistrationController {
                  return false;
          return true;
      }
+
+    /**
+     * reading and saving all accounts,
+     * then checking whether the login is free
+     * and adding new one.
+     * @throws IOException
+     */
      @FXML
      public void Registrate() throws IOException {
 
@@ -69,6 +88,7 @@ public class RegistrationController {
 
                  if (!ValidityCheck(readed))
                  {
+                     IOErrorMessage.setTextFill(Color.RED);
                      IOErrorMessage.setText("Such login is already exist!");
                      return;
                  }
@@ -78,13 +98,18 @@ public class RegistrationController {
                  for(int i = 3; i < SingInController.SizeOfAccountInfo; i++)
                      file.append(" 0");
                  file.close();
+                 IOErrorMessage.setTextFill(Color.BLACK);
                  IOErrorMessage.setText("Registration Completed");
 
-             } else
+             } else {
+                 IOErrorMessage.setTextFill(Color.RED);
                  IOErrorMessage.setText("Passwords do not match!");
+             }
          }
-         else
+         else {
+             IOErrorMessage.setTextFill(Color.RED);
              IOErrorMessage.setText("Not all fields are filled in!");
+         }
      }
 
 

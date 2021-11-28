@@ -12,6 +12,7 @@ import javafx.scene.image.ImageView;
 import javafx.util.Duration;
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.Objects;
 
 public class RoulleteController {
@@ -293,8 +294,15 @@ public class RoulleteController {
         SpinBt.setOnAction(Event -> {
             int p = (int) (Math.random() * 72) + 60;
             this.playRotate(p);
-
-
+//            Thread CurrentThread = Thread.currentThread();
+//            Thread RotatorThread = new Thread();
+//            Runnable RotateTask = new Runnable() {
+//
+//                @Override
+//                public void run() {
+//
+//                }
+//            }
             Angle = (Angle + p) % amountSectors;
             if ((ARRAYINT[Angle]) != 0) {
                 if (SectorChoice) {

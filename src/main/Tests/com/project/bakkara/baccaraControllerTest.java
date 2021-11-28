@@ -1,50 +1,68 @@
 package com.project.bakkara;
 
-import static org.junit.Assert.*;
+import org.junit.jupiter.api.Test;
 
-public class baccaraControllerTest {
+import static org.junit.jupiter.api.Assertions.*;
 
-    @org.junit.Test
-    public void lastDefine() {
+class baccaraControllerTest {
+
+    @Test
+    void initialize() {
     }
 
-    @org.junit.Test
-    public void declareDraw() {
+    @Test
+    void lastDefine() {
     }
 
-    @org.junit.Test
-    public void declarePlWin() {
+    @Test
+    void ending() {
     }
 
-    @org.junit.Test
-    public void declareOppWin() {
+    @Test
+    void declareDraw() {
     }
 
-    @org.junit.Test
-    public void resetButtons() {
+    @Test
+    void declarePlWin() {
     }
 
-    @org.junit.Test
-    public void clear() {
+    @Test
+    void declareOppWin() {
     }
 
-    @org.junit.Test
-    public void generateCard() {
+    @Test
+    void resetButtons() {
     }
 
-    @org.junit.Test
-    public void scoreUpdate() {
+    @Test
+    void clear() {
     }
 
-    @org.junit.Test
-    public void play() {
+    @Test
+    void generateCard() {
     }
 
-    @org.junit.Test
-    public void pass() {
+    @Test
+    void scoreUpdate() {
     }
 
-    @org.junit.Test
-    public void anotherOne() {
+    @Test
+    void play() {
+    }
+
+    @Test
+    void toMineMenu() {
+    }
+
+    @Test
+    void pass() {
+    }
+
+    @Test
+    void anotherOne() {
+    }
+
+    @Test
+    void openBetWindow() {
     }
 }

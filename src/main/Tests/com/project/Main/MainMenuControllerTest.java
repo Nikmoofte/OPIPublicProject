@@ -1,7 +1,36 @@
 package com.project.Main;
 
-import static org.junit.Assert.*;
+import org.junit.jupiter.api.Test;
 
-public class MainMenuControllerTest {
+import static org.junit.jupiter.api.Assertions.*;
 
+class MainMenuControllerTest {
+
+    @Test
+    void statsUpdate() {
+    }
+
+    @Test
+    void initialize() {
+    }
+
+    @Test
+    void intToString() {
+    }
+
+    @Test
+    void stringToInt() {
+    }
+
+    @Test
+    void backToSingIn() {
+    }
+
+    @Test
+    void openRoulette() {
+    }
+
+    @Test
+    void openBaccara() {
+    }
 }

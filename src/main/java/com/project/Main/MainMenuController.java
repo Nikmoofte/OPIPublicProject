@@ -18,11 +18,29 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
 
-
+/**
+ * Main menu controller class
+ * controlling main menu
+ */
 public class MainMenuController {
 
     public Button signOutButton;
 
+    /**
+     * Stores statistic information
+     * 0 - Wealth
+     * 1 - BlackJack Wins
+     * 2 - BlackJack Looses
+     * 3 - BlackJack Draws
+     * 4 - BlackJack Total Income
+     * 5 - Baccara Wins
+     * 6 - Baccara Looses
+     * 7 - Baccara Draws
+     * 8 - Baccara Total Income
+     * 9 - Roulette Wins
+     * 10 - Roulette Looses
+     * 11 - Roulette Total Income
+     */
     public static int[] Stats = new int[SingInController.SizeOfAccountInfo - 2];
 
     @FXML
@@ -73,6 +91,11 @@ public class MainMenuController {
 
     @FXML
     private Label Money;
+
+    /**
+     * Function needed in StatsUpdate
+     * @return String of Stats divided by Spaces
+     */
     private static String lineCreate()
     {
         String line = "" + Stats[0];
@@ -81,6 +104,10 @@ public class MainMenuController {
         return line;
     }
 
+    /**
+     * Functions that updating Account information in file
+     * @throws IOException Needed to create new FileReader
+     */
     public static void StatsUpdate() throws IOException
     {
         String line = lineCreate();
@@ -112,6 +139,10 @@ public class MainMenuController {
         file.close();
     }
 
+    /**
+     * Initialize function witch called when window is opened
+     * Set text of labels
+     */
     @FXML
     void initialize()
     {
@@ -133,11 +164,26 @@ public class MainMenuController {
         Money.setText(IntToString(Stats[0]));
     }
 
+    /**
+     * converts int to string
+     * @param stat integer to convert
+     * @return converted integer
+     */
     public static String IntToString(int stat) {
         return Integer.toString(stat);
     }
+
+    /**
+     * converts string to int
+     * @param str string
+     * @return converted string to int
+     */
     public static int StringToInt (String str) {return Integer.parseInt(str);}
 
+    /**
+     * Opens SingIn window
+     * @throws IOException Needed to open window
+     */
     @FXML
     void BackToSingIn() throws IOException {
         signOutButton.getScene().getWindow().hide();
@@ -145,13 +191,21 @@ public class MainMenuController {
     }
 
 
+    /**
+     * Opens Roulette window
+     * @throws IOException Needed to open window
+     */
     @FXML
-    void OpenRoullete() throws IOException {
+    void OpenRoulette() throws IOException {
         plRoulette.getScene().getWindow().hide();
         StartUp.CreateNewWindow(FXMLLoader.load(Objects.requireNonNull(RoulleteController.class.getResource("RoulleteWindow.fxml"))), 700, 400);
 
     }
 
+    /**
+     * Opens Baccara window
+     * @throws IOException Needed to open window
+     */
     @FXML
     void OpenBaccara() throws IOException
     {

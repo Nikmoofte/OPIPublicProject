@@ -9,10 +9,11 @@ import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
 
-import java.io.IOException;
 
+/**
+ * Controls Baccara's Bet window
+ */
 public class bacBetController {
 
     public TextField BetField;
@@ -23,6 +24,9 @@ public class bacBetController {
     public javafx.scene.control.MenuButton MenuButton;
     public Label IOErrorMessage;
 
+    /**
+     * Checking Validity of bet and setting it
+     */
     public void Betting()
     {
         if ((!MenuButton.getText().equals("Choose bet") || !MenuButton.getText().equals("You must choose!")) )
@@ -47,12 +51,21 @@ public class bacBetController {
         }
 
     }
-    public void CloseBetWindow() throws IOException
+
+    /**
+     * Hides bet window
+     */
+    public void CloseBetWindow()
     {
         BackBetButton.getScene().getWindow().hide();
 
 
     }
+
+    /**
+     * initialize MenuItem onAction Functions
+     * and setting the initial values
+     */
     @FXML
     void initialize()
     {
