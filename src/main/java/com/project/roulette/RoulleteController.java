@@ -14,6 +14,9 @@ import javafx.util.Duration;
 import java.io.IOException;
 import java.util.Objects;
 
+/**
+ * Controls roulette window
+ */
 public class RoulleteController {
     int Account = MainMenuController.Stats[0], Sector, bet, Angle, wins = 1, looses = 1;
 
@@ -81,12 +84,22 @@ public class RoulleteController {
     @FXML
     private Button MainMenu;
 
+
+    /**
+     * Opens Main menu
+     * @throws IOException Needed to open window
+     */
     @FXML
     void MainMenu() throws IOException {
         MainMenu.getScene().getWindow().hide();
         StartUp.CreateNewWindow(FXMLLoader.load(Objects.requireNonNull(StartUp.class.getResource("main-menu.fxml"))), 700, 500);
     }
 
+
+    /**
+     * @return bet
+     * @throws Exception Needed to check validity of bet
+     */
     private int getValidBet() throws Exception {
         int num = Integer.parseInt(BetTxtField.getText());
         if (num > this.Account) {
@@ -98,6 +111,9 @@ public class RoulleteController {
         return num;
     }
 
+    /**
+     * Actions to be executed if user had a bet on certain sector
+     */
     private void sectorBtAction() {
         try {
             bet = this.getValidBet();
@@ -116,6 +132,9 @@ public class RoulleteController {
         }
     }
 
+    /**
+     * Actions to be executed if user had a bet on even/odd
+     */
     private void sectorEvenOddAction() {
         try {
             bet = this.getValidBet();
@@ -150,6 +169,9 @@ public class RoulleteController {
         }
     }
 
+    /**
+     * Actions to be executed if user had a bet on range
+     */
     private void sectorRangeAction() {
         try {
             bet = this.getValidBet();
@@ -182,6 +204,9 @@ public class RoulleteController {
         }
     }
 
+    /**
+     * Actions to be executed if user had a bet on color
+     */
     private void sectorColorAction() {
         try {
             bet = this.getValidBet();
@@ -214,6 +239,10 @@ public class RoulleteController {
         }
     }
 
+    /**
+     * Animation of roulette spinning
+     * @param p number of sectors to spin the roulette
+     */
     private void playRotate(int p) {
         RotateTransition rotate = new RotateTransition();
         rotate.setNode(RouletteImg);
@@ -222,6 +251,9 @@ public class RoulleteController {
         rotate.play();
     }
 
+    /**
+     * Actions to be executed if user winned the game
+     */
     private void win() {
         WinLooseLb.setDisable(false);
         looses = 1;
@@ -244,6 +276,9 @@ public class RoulleteController {
         wins++;
     }
 
+    /**
+     * Actions to be executed if user loosed the game
+     */
     private void loose() {
         WinLooseLb.setDisable(false);
         wins = 1;
@@ -266,6 +301,9 @@ public class RoulleteController {
     }
 
 
+    /**
+     * Initialize roulette game
+     */
     @FXML
     void initialize() {
         this.accountStr = Integer.toString(this.Account);

@@ -221,7 +221,7 @@ public class baccaraController
 
     /**
      * Opens Main menu
-     * @throws IOException
+     * @throws IOException Needed to open window
      */
     public void ToMineMenu() throws IOException
     {
