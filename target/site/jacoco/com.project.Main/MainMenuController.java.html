@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="ru"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>MainMenuController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">OpiProject</a> &gt; <a href="index.source.html" class="el_package">com.project.Main</a> &gt; <span class="el_source">MainMenuController.java</span></div><h1>MainMenuController.java</h1><pre class="source lang-java linenums">package com.project.Main;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+
+import java.util.Objects;
+
+
+import com.project.bakkara.baccaraController;
+import com.project.roulette.RoulleteController;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+
+
+/**
+ * Main menu controller class
+ * controlling main menu
+ */
+<span class="nc" id="L25">public class MainMenuController {</span>
+
+    public Button signOutButton;
+
+    /**
+     * Stores statistic information
+     * 0 - Wealth
+     * 1 - BlackJack Wins
+     * 2 - BlackJack Looses
+     * 3 - BlackJack Draws
+     * 4 - BlackJack Total Income
+     * 5 - Baccara Wins
+     * 6 - Baccara Looses
+     * 7 - Baccara Draws
+     * 8 - Baccara Total Income
+     * 9 - Roulette Wins
+     * 10 - Roulette Looses
+     * 11 - Roulette Total Income
+     */
+<span class="nc" id="L44">    public static int[] Stats = new int[SingInController.SizeOfAccountInfo - 2];</span>
+
+    @FXML
+    private Button plRoulette;
+
+    @FXML
+    private Button plBaccara;
+
+    @FXML
+    private Button plBlackjack;
+
+    @FXML
+    private Label BlackWins;
+
+    @FXML
+    private Label BlackLooses;
+
+    @FXML
+    private Label BlackDraws;
+
+    @FXML
+    private Label BlackTotalIncome;
+
+    @FXML
+    private Label BacWins;
+
+    @FXML
+    private Label BacLooses;
+
+    @FXML
+    private Label BacDraws;
+
+    @FXML
+    private Label BacTotalIncome;
+
+    @FXML
+    private Label RouletteWins;
+
+    @FXML
+    private Label RouletteLooses;
+
+    @FXML
+    private Label RouletteTotalIncome;
+
+    @FXML
+    private Label nameLabel;
+
+
+    @FXML
+    private Label Money;
+
+    /**
+     * Function needed in StatsUpdate
+     * @return String of Stats divided by Spaces
+     */
+    private static String lineCreate()
+    {
+<span class="nc" id="L101">        String line = &quot;&quot; + Stats[0];</span>
+<span class="nc bnc" id="L102" title="All 2 branches missed.">        for(int i = 1; i &lt; SingInController.SizeOfAccountInfo - 2; i++)</span>
+<span class="nc" id="L103">            line += &quot; &quot; + Stats[i];</span>
+<span class="nc" id="L104">        return line;</span>
+    }
+
+    /**
+     * Functions that updating Account information in file
+     * @throws IOException Needed to create new FileReader
+     */
+    public static void StatsUpdate() throws IOException
+    {
+<span class="nc" id="L113">        String line = lineCreate();</span>
+<span class="nc" id="L114">        FileReader readfile = new FileReader(&quot;Accounts.txt&quot;);</span>
+<span class="nc" id="L115">        BufferedReader reader = new BufferedReader(readfile);</span>
+<span class="nc" id="L116">        String readed = &quot;&quot;, password = &quot;&quot;;</span>
+
+<span class="nc" id="L118">        int counter = 0;</span>
+        {
+            String temp;
+<span class="nc bnc" id="L121" title="All 2 branches missed.">            while ((temp = reader.readLine()) != null)</span>
+            {
+<span class="nc" id="L123">                counter++;</span>
+<span class="nc bnc" id="L124" title="All 2 branches missed.">                if (counter != SingInController.lineCount)</span>
+<span class="nc" id="L125">                    readed += temp + &quot;\n&quot;;</span>
+                else
+<span class="nc" id="L127">                    password = temp.split(&quot; &quot;)[1];</span>
+            }
+
+        }
+
+<span class="nc" id="L132">        readfile.close();</span>
+<span class="nc" id="L133">        reader.close();</span>
+
+
+<span class="nc" id="L136">        FileWriter file = new FileWriter(&quot;Accounts.txt&quot;);</span>
+<span class="nc" id="L137">        file.write(readed);</span>
+<span class="nc" id="L138">        file.append(SingInController.Name + &quot; &quot; + password + &quot; &quot; + line);</span>
+<span class="nc" id="L139">        file.close();</span>
+<span class="nc" id="L140">    }</span>
+
+    /**
+     * Initialize function witch called when window is opened
+     * Set text of labels
+     */
+    @FXML
+    void initialize()
+    {
+<span class="nc" id="L149">        BlackWins.setText(IntToString(Stats[1]));</span>
+<span class="nc" id="L150">        BlackLooses.setText(IntToString(Stats[2]));</span>
+<span class="nc" id="L151">        BlackDraws.setText(IntToString(Stats[3]));</span>
+<span class="nc" id="L152">        BlackTotalIncome.setText(IntToString(Stats[4]));</span>
+<span class="nc" id="L153">        BacWins.setText(IntToString(Stats[5]));</span>
+<span class="nc" id="L154">        BacLooses.setText(IntToString(Stats[6]));</span>
+<span class="nc" id="L155">        BacDraws.setText(IntToString(Stats[7]));</span>
+<span class="nc" id="L156">        BacTotalIncome.setText(IntToString(Stats[8]));</span>
+<span class="nc" id="L157">        RouletteWins.setText(IntToString(Stats[9]));</span>
+<span class="nc" id="L158">        RouletteLooses.setText(IntToString(Stats[10]));</span>
+<span class="nc" id="L159">        RouletteTotalIncome.setText(IntToString(Stats[11]));</span>
+
+
+
+<span class="nc" id="L163">        nameLabel.setText(SingInController.Name + &quot; !&quot;);</span>
+<span class="nc" id="L164">        Money.setText(IntToString(Stats[0]));</span>
+<span class="nc" id="L165">    }</span>
+
+    /**
+     * converts int to string
+     * @param stat integer to convert
+     * @return converted integer
+     */
+    public static String IntToString(int stat) {
+<span class="nc" id="L173">        return Integer.toString(stat);</span>
+    }
+
+    /**
+     * converts string to int
+     * @param str string
+     * @return converted string to int
+     */
+<span class="nc" id="L181">    public static int StringToInt (String str) {return Integer.parseInt(str);}</span>
+
+    /**
+     * Opens SingIn window
+     * @throws IOException Needed to open window
+     */
+    @FXML
+    void BackToSingIn() throws IOException {
+<span class="nc" id="L189">        signOutButton.getScene().getWindow().hide();</span>
+<span class="nc" id="L190">        StartUp.CreateNewWindow(FXMLLoader.load(Objects.requireNonNull(StartUp.class.getResource(&quot;SingIn.fxml&quot;))), 700, 400);</span>
+<span class="nc" id="L191">    }</span>
+
+
+    /**
+     * Opens Roulette window
+     * @throws IOException Needed to open window
+     */
+    @FXML
+    void OpenRoulette() throws IOException {
+<span class="nc" id="L200">        plRoulette.getScene().getWindow().hide();</span>
+<span class="nc" id="L201">        StartUp.CreateNewWindow(FXMLLoader.load(Objects.requireNonNull(RoulleteController.class.getResource(&quot;RoulleteWindow.fxml&quot;))), 700, 400);</span>
+
+<span class="nc" id="L203">    }</span>
+
+    /**
+     * Opens Baccara window
+     * @throws IOException Needed to open window
+     */
+    @FXML
+    void OpenBaccara() throws IOException
+    {
+
+<span class="nc" id="L213">        plBaccara.getScene().getWindow().hide();</span>
+<span class="nc" id="L214">        Parent Window = FXMLLoader.load(Objects.requireNonNull(baccaraController.class.getResource(&quot;baccaraWindow.fxml&quot;)));</span>
+<span class="nc" id="L215">        StartUp.CreateNewWindow(Window, 900, 600);</span>
+
+<span class="nc" id="L217">    }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

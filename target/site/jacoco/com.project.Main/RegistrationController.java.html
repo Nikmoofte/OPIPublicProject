@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="ru"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>RegistrationController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">OpiProject</a> &gt; <a href="index.source.html" class="el_package">com.project.Main</a> &gt; <span class="el_source">RegistrationController.java</span></div><h1>RegistrationController.java</h1><pre class="source lang-java linenums">package com.project.Main;
+
+
+import java.io.*;
+import java.util.Objects;
+
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.control.*;
+import javafx.scene.paint.Color;
+
+
+/**
+ * Control the registration window
+ */
+<span class="nc" id="L16">public class RegistrationController {</span>
+
+    public Label IOErrorMessage;
+    @FXML
+    private TextField reg_login;
+
+    @FXML
+    private PasswordField reg_password1;
+
+    @FXML
+    private PasswordField reg_password2;
+
+
+    @FXML
+    private Button goBackButton;
+
+
+    /**
+     * Opens SingIn window
+     */
+    @FXML
+    public void BackToSingIn()
+    {
+<span class="nc" id="L39">        goBackButton.getScene().getWindow().hide();</span>
+        try {
+<span class="nc" id="L41">            StartUp.CreateNewWindow(FXMLLoader.load(Objects.requireNonNull(SingInController.class.getResource(&quot;SingIn.fxml&quot;))), 700, 400);</span>
+<span class="nc" id="L42">        } catch (IOException e) {</span>
+<span class="nc" id="L43">            e.printStackTrace();</span>
+<span class="nc" id="L44">        }</span>
+<span class="nc" id="L45">    }</span>
+
+    /**
+     * Checking whether the login is free
+     * @param accounts all accounts
+     * @return whether the login is free
+     */
+     private boolean ValidityCheck(String accounts)
+     {
+<span class="nc bnc" id="L54" title="All 2 branches missed.">         for(String s : accounts.split(&quot;\n&quot;))</span>
+<span class="nc bnc" id="L55" title="All 2 branches missed.">             if(s.split(&quot; &quot;)[0].equals(reg_login.getText()))</span>
+<span class="nc" id="L56">                 return false;</span>
+<span class="nc" id="L57">         return true;</span>
+     }
+
+    /**
+     * reading and saving all accounts,
+     * then checking whether the login is free
+     * and adding new one.
+     * @throws IOException
+     */
+     @FXML
+     public void Registrate() throws IOException {
+
+<span class="nc bnc" id="L69" title="All 4 branches missed.">         if (!(reg_password1.getText() ==  null || reg_password1.getText().equals(&quot;&quot;)</span>
+<span class="nc bnc" id="L70" title="All 4 branches missed.">                 || reg_password2.getText() == null || reg_password2.getText().equals(&quot;&quot;)</span>
+<span class="nc bnc" id="L71" title="All 4 branches missed.">                 || reg_login.getText() == null || reg_login.getText().equals(&quot;&quot;)))</span>
+         {
+<span class="nc bnc" id="L73" title="All 2 branches missed.">             if (reg_password1.getText().equals(reg_password2.getText()))</span>
+             {
+<span class="nc" id="L75">                 FileReader readfile = new FileReader(&quot;Accounts.txt&quot;);</span>
+<span class="nc" id="L76">                 BufferedReader reader = new BufferedReader(readfile);</span>
+<span class="nc" id="L77">                 String readed = reader.readLine();</span>
+                 {
+                     String temp;
+<span class="nc bnc" id="L80" title="All 2 branches missed.">                     while ((temp = reader.readLine()) != null)</span>
+                     {
+<span class="nc" id="L82">                         readed += &quot;\n&quot; + temp;</span>
+                     }
+
+                 }
+<span class="nc" id="L86">                 readfile.close();</span>
+<span class="nc" id="L87">                 reader.close();</span>
+
+<span class="nc bnc" id="L89" title="All 2 branches missed.">                 if (!ValidityCheck(readed))</span>
+                 {
+<span class="nc" id="L91">                     IOErrorMessage.setTextFill(Color.RED);</span>
+<span class="nc" id="L92">                     IOErrorMessage.setText(&quot;Such login is already exist!&quot;);</span>
+<span class="nc" id="L93">                     return;</span>
+                 }
+<span class="nc" id="L95">                 FileWriter file = new FileWriter(&quot;Accounts.txt&quot;);</span>
+<span class="nc" id="L96">                 file.write(readed);</span>
+<span class="nc" id="L97">                 file.append(&quot;\n&quot;).append(reg_login.getText()).append(&quot; &quot;).append(reg_password1.getText()).append(&quot; 1000&quot;);</span>
+<span class="nc bnc" id="L98" title="All 2 branches missed.">                 for(int i = 3; i &lt; SingInController.SizeOfAccountInfo; i++)</span>
+<span class="nc" id="L99">                     file.append(&quot; 0&quot;);</span>
+<span class="nc" id="L100">                 file.close();</span>
+<span class="nc" id="L101">                 IOErrorMessage.setTextFill(Color.BLACK);</span>
+<span class="nc" id="L102">                 IOErrorMessage.setText(&quot;Registration Completed&quot;);</span>
+
+<span class="nc" id="L104">             } else {</span>
+<span class="nc" id="L105">                 IOErrorMessage.setTextFill(Color.RED);</span>
+<span class="nc" id="L106">                 IOErrorMessage.setText(&quot;Passwords do not match!&quot;);</span>
+             }
+         }
+         else {
+<span class="nc" id="L110">             IOErrorMessage.setTextFill(Color.RED);</span>
+<span class="nc" id="L111">             IOErrorMessage.setText(&quot;Not all fields are filled in!&quot;);</span>
+         }
+<span class="nc" id="L113">     }</span>
+
+
+}
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

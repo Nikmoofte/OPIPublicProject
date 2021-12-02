@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="ru"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>baccaraController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">OpiProject</a> &gt; <a href="index.source.html" class="el_package">com.project.bakkara</a> &gt; <span class="el_source">baccaraController.java</span></div><h1>baccaraController.java</h1><pre class="source lang-java linenums">package com.project.bakkara;
+
+import com.project.Main.MainMenuController;
+import com.project.Main.StartUp;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import com.project.bakkara.Card.Card;
+
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.text.Text;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+
+import java.io.IOException;
+import java.security.SecureRandom;
+import java.util.Objects;
+
+
+/**
+ * Controls baccara window
+ */
+<span class="nc" id="L25">public class baccaraController</span>
+{
+<span class="nc" id="L27">    private static final SecureRandom rand = new SecureRandom();</span>
+    public ImageView PlayerFirstCard;
+    public ImageView PlayerSecondCard;
+    public ImageView PlayerThirdCard;
+    public ImageView OpponentFirstCard;
+    public ImageView OpponentSecondCard;
+    public ImageView OpponentThirdCard;
+    public Button BetButton;
+    public Button BackButton;
+    public static Text BetVal;
+    public Text Money;
+    Image BackCardImage;
+    public Text PlayerScore;
+    public Text OpponentScore;
+    public Text StateMessage;
+
+    public Button PlayButton;
+    public Button PassButton;
+    public Button AOneButton;
+<span class="nc" id="L46">    static int val = 0;</span>
+
+    int
+            i_playerscore;
+    int i_opponentscore;
+
+    /**
+     * setting the initial values
+     */
+    @FXML
+    void initialize()
+    {
+<span class="nc" id="L58">        val = 0;</span>
+<span class="nc" id="L59">        Money.setText(&quot;&quot; + MainMenuController.Stats[0]);</span>
+<span class="nc" id="L60">    }</span>
+
+    /**
+     * Last check of player's and opponent's scores
+     */
+    void LastDefine()
+    {
+<span class="nc bnc" id="L67" title="All 2 branches missed.">        if (i_opponentscore &gt; i_playerscore)</span>
+<span class="nc" id="L68">            DeclareOppWin();</span>
+<span class="nc bnc" id="L69" title="All 2 branches missed.">        else if(i_opponentscore == i_playerscore)</span>
+<span class="nc" id="L70">            DeclareDraw();</span>
+        else
+<span class="nc" id="L72">            DeclarePlWin();</span>
+<span class="nc" id="L73">    }</span>
+<span class="nc" id="L74">    enum state</span>
+    {
+<span class="nc" id="L76">        Win, Lose, Draw</span>
+    }
+    public static state BetState;
+
+    /**
+     * Changing statistics
+     * @param State Current state of game(Win/Lose/Draw)
+     */
+    void Ending(state State)
+    {
+        int Income;
+<span class="nc bnc" id="L87" title="All 2 branches missed.">        if (BetState.equals(state.Draw))</span>
+<span class="nc" id="L88">            Income = 9 * val;</span>
+        else
+<span class="nc" id="L90">            Income = val;</span>
+<span class="nc bnc" id="L91" title="All 2 branches missed.">        if(!State.equals(BetState))</span>
+<span class="nc" id="L92">            Income = -val;</span>
+
+<span class="nc" id="L94">        MainMenuController.Stats[0] += Income;</span>
+<span class="nc" id="L95">        Money.setText(&quot;&quot; + MainMenuController.Stats[0]);</span>
+<span class="nc" id="L96">        MainMenuController.Stats[5 + State.ordinal()]++;</span>
+<span class="nc" id="L97">        MainMenuController.Stats[8] += Income;</span>
+        try {
+<span class="nc" id="L99">            MainMenuController.StatsUpdate();</span>
+<span class="nc" id="L100">        } catch (IOException e) {</span>
+<span class="nc" id="L101">            System.out.println(&quot;Status update Error!&quot;);</span>
+<span class="nc" id="L102">        }</span>
+<span class="nc" id="L103">    }</span>
+
+    /**
+     * Declares Draw and calling Ending func with Draw state
+     */
+    void DeclareDraw()
+    {
+<span class="nc" id="L110">        ResetButtons();</span>
+<span class="nc" id="L111">        StateMessage.setText(&quot;Draw&quot;);</span>
+<span class="nc" id="L112">        Ending(state.Draw);</span>
+<span class="nc" id="L113">    }</span>
+
+    /**
+     * Declares player win and calling Ending func with Win state
+     */
+    void DeclarePlWin()
+    {
+<span class="nc" id="L120">        ResetButtons();</span>
+<span class="nc" id="L121">        StateMessage.setText(&quot;Win&quot;);</span>
+<span class="nc" id="L122">        Ending(state.Win);</span>
+<span class="nc" id="L123">    }</span>
+
+    /**
+     * Declares Opponent's win and calling Ending func with Lose state
+     */
+    void DeclareOppWin()
+    {
+<span class="nc" id="L130">        ResetButtons();</span>
+<span class="nc" id="L131">        StateMessage.setText(&quot;Lose&quot;);</span>
+<span class="nc" id="L132">        Ending(state.Lose);</span>
+<span class="nc" id="L133">    }</span>
+
+    /**
+     * Reset buttons to initial states
+     */
+    void ResetButtons()
+    {
+<span class="nc" id="L140">        AOneButton.setVisible(false);</span>
+<span class="nc" id="L141">        PassButton.setVisible(false);</span>
+<span class="nc" id="L142">        PlayButton.setVisible(true);</span>
+<span class="nc" id="L143">        BetButton.setVisible(true);</span>
+<span class="nc" id="L144">    }</span>
+
+    /**
+     * Resets cards and text to initial states
+     */
+    void Clear()
+    {
+<span class="nc" id="L151">        BackCardImage = new Image(&quot;Back.png&quot;);</span>
+<span class="nc" id="L152">        PlayerFirstCard.setImage(BackCardImage);</span>
+<span class="nc" id="L153">        PlayerSecondCard.setImage(BackCardImage);</span>
+<span class="nc" id="L154">        PlayerThirdCard.setImage(BackCardImage);</span>
+<span class="nc" id="L155">        OpponentFirstCard.setImage(BackCardImage);</span>
+<span class="nc" id="L156">        OpponentSecondCard.setImage(BackCardImage);</span>
+<span class="nc" id="L157">        OpponentThirdCard.setImage(BackCardImage);</span>
+<span class="nc" id="L158">        StateMessage.setText(&quot;&quot;);</span>
+<span class="nc" id="L159">    }</span>
+
+    /**
+     * Generates new card
+     * @return new card
+     */
+    Card GenerateCard()
+    {
+<span class="nc" id="L167">        return new Card(rand.nextInt(4), rand.nextInt(13));</span>
+    }
+
+    /**
+     * Updating score in window
+     */
+    void ScoreUpdate()
+    {
+<span class="nc" id="L175">        PlayerScore.setText(/*&quot;Player Score :&quot; + */&quot;&quot; + i_playerscore);</span>
+<span class="nc" id="L176">        OpponentScore.setText(/*&quot;Opponent Score :&quot; + */&quot;&quot; + i_opponentscore);</span>
+
+<span class="nc" id="L178">    }</span>
+
+    /**
+     * Play button func:
+     * Generating 4 cards
+     * Calculating scores
+     * And deciding what to do next
+     */
+    @FXML
+    protected void Play()
+    {
+<span class="nc" id="L189">        Clear();</span>
+<span class="nc" id="L190">        PlayButton.setVisible(false);</span>
+<span class="nc" id="L191">        BetButton.setVisible(false);</span>
+        Card
+<span class="nc" id="L193">                PlayerCard1     = GenerateCard(),</span>
+<span class="nc" id="L194">                PlayerCard2     = GenerateCard(),</span>
+<span class="nc" id="L195">                OpponentCard1   = GenerateCard(),</span>
+<span class="nc" id="L196">                OpponentCard2   = GenerateCard();</span>
+        //StateMessage.setText(PlayerCard1.GetCard() + &quot;.png&quot;);
+
+<span class="nc" id="L199">        PlayerFirstCard.setImage(new Image(PlayerCard1.GetCard() + &quot;.png&quot;));</span>
+<span class="nc" id="L200">        PlayerSecondCard.setImage(new Image( PlayerCard2.GetCard() + &quot;.png&quot;));</span>
+<span class="nc" id="L201">        OpponentFirstCard.setImage(new Image(OpponentCard1.GetCard() + &quot;.png&quot;));</span>
+<span class="nc" id="L202">        OpponentSecondCard.setImage(new Image(OpponentCard2.GetCard() + &quot;.png&quot;));</span>
+
+
+
+<span class="nc bnc" id="L206" title="All 4 branches missed.">        i_playerscore = (((PlayerCard1.GetRank() &gt; 8)? 0 : (PlayerCard1.GetRank() + 1)) + ((PlayerCard2.GetRank() &gt; 8)? 0 : (PlayerCard2.GetRank() + 1))) % 10;</span>
+<span class="nc bnc" id="L207" title="All 4 branches missed.">        i_opponentscore = (((OpponentCard1.GetRank() &gt; 8)? 0 : (OpponentCard1.GetRank() + 1)) + ((OpponentCard2.GetRank() &gt; 8)? 0 : (OpponentCard2.GetRank() + 1))) % 10;</span>
+
+<span class="nc" id="L209">        ScoreUpdate();</span>
+
+<span class="nc bnc" id="L211" title="All 2 branches missed.">        if (i_opponentscore &gt;= 8)</span>
+<span class="nc" id="L212">            LastDefine();</span>
+<span class="nc bnc" id="L213" title="All 2 branches missed.">        else if(i_playerscore &gt;= 8)</span>
+<span class="nc" id="L214">            DeclarePlWin();</span>
+        else
+        {
+<span class="nc" id="L217">            AOneButton.setVisible(true);</span>
+<span class="nc" id="L218">            PassButton.setVisible(true);</span>
+        }
+<span class="nc" id="L220">    }</span>
+
+    /**
+     * Opens Main menu
+     * @throws IOException
+     */
+    public void ToMineMenu() throws IOException
+    {
+<span class="nc" id="L228">        BackButton.getScene().getWindow().hide();</span>
+<span class="nc" id="L229">        StartUp.CreateNewWindow(FXMLLoader.load(Objects.requireNonNull(MainMenuController.class.getResource(&quot;main-menu.fxml&quot;))), 700, 500);</span>
+<span class="nc" id="L230">    }</span>
+
+    /**
+     * Activating opponents &quot;AI&quot; and calling Last define
+     */
+    public void Pass()
+    {
+<span class="nc bnc" id="L237" title="All 4 branches missed.">        if (i_playerscore &gt;= i_opponentscore &amp;&amp; i_opponentscore &lt; 7)</span>
+        {
+<span class="nc" id="L239">            Card OpponentCard3 = GenerateCard();</span>
+<span class="nc" id="L240">            OpponentThirdCard.setImage(new Image(OpponentCard3.GetCard() + &quot;.png&quot;));</span>
+<span class="nc bnc" id="L241" title="All 2 branches missed.">            i_opponentscore += ((OpponentCard3.GetRank() &gt; 8) ? 0 : (OpponentCard3.GetRank() + 1));</span>
+<span class="nc" id="L242">            i_opponentscore %= 10;</span>
+<span class="nc" id="L243">            ScoreUpdate();</span>
+        }
+<span class="nc" id="L245">        LastDefine();</span>
+<span class="nc" id="L246">        AOneButton.setVisible(false);</span>
+<span class="nc" id="L247">        PassButton.setVisible(false);</span>
+<span class="nc" id="L248">    }</span>
+
+    /**
+     * Adding Another card to player and updating scores
+     * Calling Pass func
+     */
+    public void AnotherOne() {
+<span class="nc" id="L255">        Card PlayerCard3 = GenerateCard();</span>
+<span class="nc" id="L256">        PlayerThirdCard.setImage(new Image(PlayerCard3.GetCard() + &quot;.png&quot;));</span>
+<span class="nc bnc" id="L257" title="All 2 branches missed.">        i_playerscore += ((PlayerCard3.GetRank() &gt; 8) ? 0 : (PlayerCard3.GetRank() + 1));</span>
+<span class="nc" id="L258">        i_playerscore %= 10;</span>
+<span class="nc" id="L259">        ScoreUpdate();</span>
+<span class="nc" id="L260">        Pass();</span>
+<span class="nc" id="L261">    }</span>
+
+
+
+    public void OpenBetWindow() throws IOException
+    {
+
+
+        //StartUp.CreateNewWindow(FXMLLoader.load(Objects.requireNonNull(com.project.bakkara.baccaraController.class.getResource(&quot;betWindow.fxml&quot;))), 400, 200);
+<span class="nc" id="L270">        Scene scene = new Scene(FXMLLoader.load(Objects.requireNonNull(bacBetController.class.getResource(&quot;betWindow.fxml&quot;))), 400, 200);</span>
+<span class="nc" id="L271">        Stage BetStage = new Stage();</span>
+<span class="nc" id="L272">        BetStage.setScene(scene);</span>
+<span class="nc" id="L273">        BetStage.setResizable(false);</span>
+<span class="nc" id="L274">        BetStage.setTitle(StartUp.ProgramName);</span>
+<span class="nc" id="L275">        BetStage.initOwner(PlayButton.getScene().getWindow());</span>
+<span class="nc" id="L276">        BetStage.initModality(Modality.WINDOW_MODAL);</span>
+<span class="nc" id="L277">        BetStage.show();</span>
+<span class="nc" id="L278">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>
