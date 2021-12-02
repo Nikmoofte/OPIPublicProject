@@ -1,0 +1,10 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+OpiProject,com.project.bakkara.Card,Card,100,0,0,0,9,0,5,0,5,0
+OpiProject,com.project.bakkara,bacBetController,137,0,10,0,34,0,12,0,7,0
+OpiProject,com.project.bakkara,baccaraController,486,0,28,0,106,0,31,0,17,0
+OpiProject,com.project.bakkara,baccaraController.state,21,0,0,0,2,0,1,0,1,0
+OpiProject,com.project.roulette,RoulleteController,1284,0,64,0,234,0,57,0,23,0
+OpiProject,com.project.Main,RegistrationController,197,0,24,0,40,0,16,0,4,0
+OpiProject,com.project.Main,MainMenuController,234,0,6,0,49,0,13,0,10,0
+OpiProject,com.project.Main,SingInController,146,0,12,0,39,0,11,0,5,0
+OpiProject,com.project.Main,StartUp,43,0,0,0,12,0,4,0,4,0
